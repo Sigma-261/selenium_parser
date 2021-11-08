@@ -1,0 +1,6 @@
+[NAME]:
+Systems and methods for implementing hybrid public-private block-chain ledgers
+[ID]:
+US10824999B2
+[LINK]:
+https://patents.google.com/patent/US10824999B2/en

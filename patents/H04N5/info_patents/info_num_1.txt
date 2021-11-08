@@ -1,0 +1,562 @@
+[NAME]:
+Auto focus and optical image stabilization in a compact folded camera
+[ID]:
+US11131836B2
+[LINK]:
+https://patents.google.com/patent/US11131836B2/en
+[PUBLIC_AS]:
+CN107533211A, CN107533211B, CN108535840A, CN108535840B, CN111061041A, CN111061041B, CN111175926A, CN111175926B, CN111175935A, CN112305833A, CN112394467A, EP3283915A1, EP3283915A4, EP3283915B1, EP3540492A1, EP3541063A1, EP3696587A1, ES2732495T3, KR101866482B1, KR101963546B1, KR102078978B1, KR102081556B1, KR102088603B1, KR102227200B1, KR20170118943A, KR20180031070A, KR20190025761A, KR20190025762A, KR20190025763A, KR20200017560A, KR20210027535A, US10371928B2, US10459205B2, US10571666B2, US10613303B2, US10656396B1, US10678029B1, US10962746B2, US2018024329A1, US2018196238A1, US2019196156A1, US2019204563A1, US2019204564A1, US2020150403A1, US2020174232A1, US2020292795A1, US2021165195A1, US9927600B2, WO2016166730A1
+[STATUS]:
+Active
+[ABSTRACT]:
+Compact folded camera modules having auto-focus (AF) and optical image stabilization (OIS) capabilities and multi-aperture cameras including such modules. In an embodiment, a folded camera module includes an optical path folding element (OPFE) for folding light from a first optical path with a first optical axis to a second optical path with a second optical axis perpendicular to the first optical axis, an image sensor and a lens module carrying a lens with a symmetry axis parallel to the second optical axis. The lens module can be actuated to move in first and second orthogonal directions in a plane perpendicular to the first optical axis, the movement in the first direction being for auto-focus and the movement in the second direction being for OIS. The OPFE can be actuated to tilt for OIS.
+[INVENTORS]:
+Ephraim Goldenberg, Gal Shabtay, Gal Avivi, Michael Dror, Gil BACHAR, Itay Jerby, Itay Yedid
+[ASSIGNEE]:
+Corephotonics Ltd
+[СLASSES]:
+G03B5/00 - Adjustment of optical system relative to image or object surface other than for focusing
+G02B13/0065 - Miniaturised objectives for electronic devices, e.g. portable telephones, webcams, PDAs, small digital cameras employing a special optical element having a beam-folding prism or mirror
+G02B13/16 - Optical objectives specially designed for the purposes specified below for use in conjunction with image converters or intensifiers, or for use with projectors, e.g. objectives for projection TV
+G02B27/646 - Imaging systems using optical elements for stabilisation of the lateral and angular position of the image compensating for small deviations, e.g. due to vibration or shake
+G02B7/02 - Mountings, adjusting means, or light-tight connections, for optical elements for lenses
+G02B7/08 - Mountings, adjusting means, or light-tight connections, for optical elements for lenses with mechanism for focusing or varying magnification adapted to co-operate with a remote control mechanism
+G02B7/09 - Mountings, adjusting means, or light-tight connections, for optical elements for lenses with mechanism for focusing or varying magnification adapted for automatic focusing or varying magnification
+G03B13/36 - Autofocus systems
+H04N5/2254 - Mounting of optical parts, e.g. lenses, shutters, filters or optical parts peculiar to the presence or use of an electronic image sensor
+H04N5/2257 - Mechanical and electrical details of cameras or camera modules for embedding in other devices
+H04N5/2258 - Cameras using two or more image sensors, e.g. a CMOS sensor for video and a CCD for still image
+H04N5/23258 - Motion detection based on additional sensors
+H04N5/23287 - Vibration or motion blur correction performed by mechanical compensation by shifting the lens/sensor position
+G02B26/0816 - Optical devices or arrangements using movable or deformable optical elements for controlling the intensity, colour, phase, polarisation or direction of light, e.g. switching, gating, modulating for controlling the direction of light by means of one or more reflecting elements
+[CLAIMS]:
+1. A folded camera module, comprising:
+a) a lens module having a lens optical axis; and
+b) an optical path folding element (OPFE) for folding light from a first optical path to a second optical path towards an image sensor, the second optical path being along the lens optical axis,
+wherein the lens module is designed to be moved for auto-focus (AF) along a first direction substantially parallel to the lens optical axis,
+wherein the OPFE is designed to be tilted for optical image stabilization (OIS) around a single OPFE tilt axis that is parallel to a second direction to compensate for tilt of the folded camera module around the second direction, and
+
+wherein the second direction is substantially orthogonal to both the first and second optical paths.
+2. The folded camera module of claim 1, further comprising:
+c) a lens actuation sub-assembly configured to actuate the lens module movement in the first direction; and
+d) an OPFE actuation sub-assembly configured to tilt the OPFE around the a single OPFE tilt axis.
+3. The folded camera module of claim 2, further comprising one or more position sensors that enable measurement of a position of the lens module and measurement of OPFE tilt.
+4. The folded camera module of claim 3, further comprising an actuation controller configured to receive a data input indicative of the folded camera tilt and a data input from the one or more position sensors and to generate, in response to the data inputs, movement instructions and tilt instructions to, respectively, the lens and OPFE actuation sub-assemblies.
+5. The folded camera module of claim 2, wherein each of the lens actuation sub-assembly and the OPFE actuation sub-assembly includes a plurality of flexible hanging members.
+6. The folded camera module of claim 5, wherein the flexible hanging members of the lens actuation sub-assembly are parallel to each other.
+7. The folded camera module of claim 5, wherein the flexible hanging members of the OPFE actuation sub-assembly are tilted.
+8. The folded camera module of claim 1, wherein the OPFE tilt axis is a virtual axis.
+9. The folded camera module of claim 2, wherein the OPFE actuation sub-assembly includes at least one coil-magnet pair for actuating the OPFE tilt.
+10. The folded camera module of claim 9, wherein at least one of the coil-magnet pair is positioned below the OPFE.
+11. The folded camera module of claim 1, wherein the OPFE includes a prism or a mirror.
+12. The folded camera module of claim 2, wherein the lens actuation sub-assembly includes a plurality of coil-magnet pairs for actuating the lens module movement.
+13. The folded camera module of claim 12, wherein the plurality of coil-magnet pairs includes two coil-magnet pairs.
+14. The folded camera module of claim 12, wherein at least one of the plurality of coil-magnet pairs is positioned between the lens module and the image sensor.
+15. A method of providing optical image stabilization (OIS) and auto-focus (AF) in a folded camera module, the folded camera module comprising a lens module having a lens optical axis and an optical path folding element (OPFE) for folding light from a first optical path to a second optical path towards an image sensor, the second optical path being along the lens optical axis, the method comprising:
+a) moving the lens module for AF along a first direction substantially parallel to the lens optical axis; and
+b) tilting the OPFE for OIS around a single OPFE tilt axis parallel to a second direction to compensate for tilt of the folded camera module around the second direction, wherein the second direction is substantially orthogonal to both the first and second optical paths.
+16. The method of claim 15, further comprising:
+c) operating a lens actuation sub-assembly configured to actuate the lens module movement along the first direction; and
+d) operating an OPFE actuation sub-assembly configured to actuate the tilt of the OPFE around the a single OPFE tilt axis.
+17. The method of claim 16, wherein each of the lens actuation and OPFE actuation sub-assemblies includes a plurality of flexible hanging members, the method further comprising tilting the flexible hanging members of the OPFE actuation sub-assembly.
+18. The method of claim 15, wherein the tilting of the OPFE is around a virtual axis.
+[DESCRIPTION]:
+CROSS-REFERENCE TO RELATED APPLICATIONS
+This application is a continuation application from U.S. patent application Ser. No. 16/861,866 filed Apr. 29, 2020 (now allowed), which was a continuation application from U.S. patent application Ser. No. 16/782,707 filed Feb. 5, 2020 (now U.S. Pat. No. 10,678,029), which was a continuation application from U.S. patent application Ser. No. 16/289,672 filed Mar. 1, 2019 (now U.S. Pat. No. 10,571,666), which was a continuation application from U.S. patent application Ser. No. 15/917,701 filed Mar. 11, 2018 (now U.S. Pat. No. 10,613,303), which was a continuation application from U.S. patent application Ser. No. 15/303,863 filed Oct. 13, 2016 (now U.S. Pat. No. 9,927,600), which was a 371 application from international patent application PCT/IB2016/052179 filed Apr. 15, 2016, and is related to and claims priority from US Provisional Patent Applications No. 62/148,435 filed on Apr. 16, 2015 and No. 62/238,890 filed Oct. 8, 2015, both applications expressly incorporated herein by reference in their entirety.
+FIELD
+Embodiments disclosed herein relate in general to digital cameras and in particular to folded-lens digital cameras and dual-aperture digital cameras with a folded lens.
+BACKGROUND
+In recent years, mobile devices such as cell-phones (and in particular smart-phones), tablets and laptops have become ubiquitous. Many of these devices include one or two compact cameras including, for example, a main rear-facing camera (i.e. a camera on the back face of the device, facing away from the user and often used for casual photography), and a secondary front-facing camera (i.e. a camera located on the front face of the device and often used for video conferencing).
+Although relatively compact in nature, the design of most of these cameras is similar to the traditional structure of a digital still camera, i.e. it comprises a lens module (or a train of several optical elements) placed on top of an image sensor. The lens module refracts the incoming light rays and bends them to create an image of a scene on the sensor. The dimensions of these cameras are largely determined by the size of the sensor and by the height of the optics. These are usually tied together through the focal length (“f”) of the lens and its field of view (FOV)—a lens that has to image a certain FOV on a sensor of a certain size has a specific focal length. Keeping the FOV constant, the larger the sensor dimensions (e.g. in a X-Y plane), the larger the focal length and the optics height.
+In recent times, a “folded camera module” structure has been suggested to reduce the height of a compact camera. In the folded camera module structure, an optical path folding element (referred to hereinafter as “OPFE”) e.g. a prism or a mirror (otherwise referred to herein collectively as a “reflecting element”) is added in order to tilt the light propagation direction from perpendicular to the smart-phone back surface to parallel to the smart-phone back surface. If the folded camera module is part of a dual-aperture camera, this provides a folded optical path through one lens module (e.g. a Tele lens). Such a camera is referred to herein as a “folded-lens dual-aperture camera” or a “dual-aperture camera with a folded lens”. In general, the folded camera module may be included in a multi-aperture camera, e.g. together with two “non-folded” camera modules in a triple-aperture camera.
+In addition to the lens module and sensor, modern cameras usually further include a mechanical motion (actuation) mechanism for two main purposes: focusing of the image on the sensor, and optical image stabilization (OIS). For focusing, in more advanced cameras, the position of the lens module (or at least of a lens element in the lens module) can be changed by means of an actuator and the focus distance can be changed in accordance with the captured object or scene.
+The trend in digital still cameras is to increase the zooming capabilities (e.g. to 5×, 10× or more) and, in cell-phone (and particularly smart-phone) cameras, to decrease the sensor pixel size and to increase the pixel count. These trends result in greater sensitivity to camera shake for two reasons: 1) greater resolution, and 2) longer exposure time due to smaller sensor pixels. An OIS mechanism is required to mitigate this effect.
+In OIS-enabled cameras, the lens module lateral position can be moved, or the entire camera module can be tilted in a fast manner to cancel camera shake during-image capture. Camera shakes shift the camera module in 6 degrees of freedom, namely linear movements in X-Y-Z, roll (“tilt about” or “tilt around”) the X axis, yaw (tilt around the Z axis) and pitch (tilt around the Y axis). While the linear motion in X-Y-Z negligibly affects the image quality and does not have to be compensated, compensation of the tilt angles is required. OIS systems shown in known designs (see e.g. US 20140327965A1) correct yaw and pitch, but not roll motion.
+A folded-lens dual-aperture camera with an auto-focus (AF) mechanism is disclosed in Applicant's US published patent application US 20160044247, the description and figures of which are incorporated herein by reference in their entirety.
+SUMMARY
+FIG. 1 shows a schematic illustration of a design that provides a “low height” folded camera module. The figure shows a folded camera module 100 comprising an OPFE 102, a lens module 104 configured to mechanically hold lens elements therein, and an image sensor 106.
+OPFE 102 can be for example any one of a mirror, a prism or a prism covered with a metallic reflecting surface. OPFE 102 can be made of various materials including for example plastic, glass, a reflective metal or a combination of two or more of these materials. According to some non-limiting examples, the lens module in camera 100 has a 6-15 mm focal length (“Tele lens”), and it can be fitted in a dual-aperture camera together with a second non-folded camera module having a 3-5 mm focal length (“Wide lens”) lens and a second sensor (not shown).
+AF functionality for the Tele lens is achieved by moving the lens module 104 along the Z axis. The Applicant has found that OIS functionality for camera 100 can be achieved in at least two ways. To compensate for camera tilt around the Z axis, lens module 104 can be shifted in the Y direction and/or OPFE 102 can be tilted around the Z axis or the X axis. However, optical analysis performed by the Applicant has shown that the tilt of the OPFE around the Z axis introduces also an undesired tilt of the image around the Z axis (roll) on sensor 106. This solution is thus lacking, since it contradicts the basic idea behind OIS functionality and since it also increases computational fusion time (needed for generating a fused image in a dual aperture camera from fusion of the Wide image, generated by the Wide lens, and a Tele image, generated by the Tele lens) due to image disparity of the Tele and Wide sensors.
+Applicant has further found that to compensate for camera tilt around the Y axis, the lens module can be moved in the X direction and/or the OPFE can be tilted around the Y axis. However, it has also been found by the Applicant that when shifting the lens module in the X direction, the height of the module will increase. Shifting the lens module in the X direction for OIS and in the Z direction for focus may require to increase module height to about 9-9.5 mm for a lens with a diameter of 6-6.5 mm, as is the case with known OIS solutions. This height addition reflects directly on the phone thickness and is undesirable in accordance with modern smart-phone design requirements.
+Accordingly, the presently disclosed subject matter includes a folded camera module comprising both AF and OIS mechanisms in a manner allowing maintenance of a desired folded camera module height. Furthermore, the incorporation of such mechanisms and capabilities does not result in compromising camera height. The presently disclosed subject matter further contemplates a folded-lens dual-aperture camera that incorporates such a folded camera module.
+Embodiments disclosed herein teach folded camera modules and folded-lens dual-aperture cameras in which the OIS functionality is divided between two optical elements as follows: a shift of the folded lens module along one axis (e.g. the Y axis) and rotation of the OPFE about an axis parallel to the same axis.
+In an embodiment, there is provided a folded camera module comprising an OPFE for folding light from a first optical path to a second optical path, the second path being along a second optical axis. The folded camera module further comprises an image sensor, and a lens module carrying a lens assembly with a symmetry axis along the second optical axis, wherein the lens module is designed to move in a first direction and in a second direction orthogonal to the first direction, the first and second directions being in a plane containing the second optical axis and perpendicular to a plane containing the first and second optical paths, and wherein the OPFE is designed to be tilted around the second direction.
+Note that as used herein, “tilt around a direction” means tilt around a line or axis in, or parallel to, the direction.
+In an embodiment, the lens module movement is in the first direction along the second optical axis for AF and the lens module movement in the second direction orthogonal to the first direction is for OIS, compensating for tilt of the camera module around the first direction.
+In an embodiment, the OPFE movement is for OIS, compensating for tilt of the camera module around the second direction.
+In an embodiment, a folded camera module further comprises a lens actuation sub-assembly configured to cause-lens module movement in the first and second directions, and an OPFE actuation sub-assembly configured to cause movement of the OPFE so as to tilt the first optical path.
+In an embodiment, each of the lens actuation and OPFE actuation sub-assemblies includes a plurality of flexible hanging members.
+In an embodiment, the flexible hanging members of the lens actuation sub-assembly are parallel to each other.
+In an embodiment, the flexible hanging members of the OPFE actuation sub-assembly are tilted.
+In an embodiment, a folded camera module further comprises an actuation controller configured to receive data input indicative of tilt in at least one direction and data input from position sensors coupled to the lens actuation sub-assembly, and, responsive to the data inputs, configured to generate instructions to the lens actuation sub-assembly to cause movement in the second direction for optical image stabilization (OIS).
+In an embodiment, the actuation controller is further configured to receive data input indicative of tilt in at least one direction and data input from position sensors coupled to the OPFE actuation sub-assembly, and, responsive to the data input, configured to generate instructions to the OPFE actuation sub-assembly to cause movement of the OPFE for OIS.
+In an embodiment, the actuation controller is further configured to receive data input indicative of focus, and, responsive to the data input, configured to generate instructions to the lens actuation sub-assembly to cause movement in the first direction for AF.
+In an embodiment, the OPFE movement to tilt is around an axis perpendicular to the first and second optical directions.
+In an embodiment, the lens module movement in the first direction is parallel to the second optical axis and the lens module movement in the second direction is perpendicular to the second optical axis.
+In an embodiment, the OPFE includes a prism.
+In an embodiment, the OPFE includes a mirror.
+In an embodiment, the lens actuation sub-assembly includes a plurality of coil-magnet pairs for actuating the lens module movement in the first and second directions.
+In an embodiment, the plurality of coil-magnet pairs includes two coil-magnet pairs.
+In an embodiment, the plurality of coil-magnet pairs includes three coil-magnet pairs.
+In an embodiment, the plurality of coil-magnet pairs includes four coil-magnet pairs.
+In an embodiment, one of the four coil-magnet pairs is positioned between the lens module and the image sensor.
+In an embodiment, a camera module further comprises one or more position sensors associated with a coil-magnet pair, the one or more position sensors enabling measurement of a position of the lens module.
+In an embodiment, the one or more position sensors enable position measurement of the lens module along the first and second movement directions.
+In an embodiment, the one or more position sensors further enables position measurement of the lens module in a tilt around an axis perpendicular to the first and second movement directions.
+In an embodiment, a position sensor is coupled to the lens actuation sub-assembly and to the actuation controller such as to allow movement of the lens module along the first and second movement directions while preventing tilt around an axis perpendicular to the first and second movement directions.
+In an embodiment, the one or more position sensors include a Hall-bar sensor.
+In an embodiment, two or three coil-magnet pairs are arranged to passively prevent undesired tilt around an axis that lies in the plane containing the first and second optical paths and is perpendicular to the second optical axis.
+In an embodiment, three coil-magnet pairs are arranged to actively prevent undesired tilt around an axis that lies in the plane containing the first and second optical paths and is perpendicular to the second optical axis.
+In an embodiment, there is provided a dual-aperture camera, comprising a folded camera module of any embodiment above and a non-folded camera module comprising a non-folded camera image sensor and a non-folded camera lens module with a lens axis along a first optical axis perpendicular to the second optical axis.
+The presently disclosed subject matter further contemplates a multi-aperture camera, comprising three or more camera modules, where at least one of the camera modules is a folded camera module as described above and any one of the other camera modules can be either a folded camera module or a non-folded camera module.
+The presently disclosed subject matter further includes a method of compensating for tilt in a folded camera module comprising an OPFE, a lens module carrying a lens assembly and an image sensor, the method comprising: using the OPFE for folding light from a first optical path to a second optical path, the second optical path being along a second optical axis, the lens module having a symmetry axis along the second optical axis, moving the lens module in a first direction and in a second direction orthogonal to the first direction, the first and second directions being in a plane containing the second optical axis and perpendicular to a plane containing the first and second optical paths, wherein the lens module movement in the first direction is for autofocus and the lens module movement in the second direction orthogonal to the first direction is for OIS compensating for tilt of the camera module around the first direction, and moving the OPFE to be tilted around the second direction, wherein the OPFE movement is for OIS, compensating for tilt of the camera module around the second direction.
+BRIEF DESCRIPTION OF THE DRAWINGS
+Non-limiting examples of embodiments disclosed herein are described below with reference to figures attached hereto that are listed following this paragraph. The drawings and descriptions are meant to illuminate and clarify embodiments disclosed herein, and should not be considered limiting in any way. Like elements in different drawings may be indicated by like numerals. Elements in the drawings are not necessarily drawn to scale.
+FIG. 1 shows a schematic illustration of a folded camera module comprising both AF and OIS mechanisms, according to an example of the presently disclosed subject matter;
+FIG. 2A shows schematically an isometric view of a folded camera module comprising both AF and OIS mechanisms, according to an example of the presently disclosed subject matter;
+FIG. 2B shows schematically a functional block diagram of a device including a folded camera module operative to perform AF and OIS, according to an example of the presently disclosed subject matter;
+FIG. 3A shows schematically an isometric view of a dual-aperture camera that includes the folded camera module of FIG. 2 together with a second, upright camera module, according to an example of the presently disclosed subject matter;
+FIG. 3B shows schematically an external view of a dual-aperture camera that includes the folded camera module of FIG. 2 together with a second, upright camera module, according to an example of the presently disclosed subject matter;
+FIG. 4 shows schematically an isometric view of the dual-aperture camera of FIG. 3A with the folded lens module removed from its mounting and turned upside down, according to an example of the presently disclosed subject matter;
+FIG. 5A shows an exploded isometric view of an embodiment of an OPFE actuation sub-assembly, in which the OPFE in the form of a prism, according to an example of the presently disclosed subject matter;
+FIG. 5B shows a side view of part of the OPFE actuation sub-assembly of FIG. 5A, according to an example of the presently disclosed subject matter;
+FIG. 5C shows an isometric exploded view of an OPFE actuation sub-assembly, in which the OPFE is in the form of a mirror, according to an example of the presently disclosed subject matter;
+FIG. 5D shows a side view of part of the OPFE actuation sub-assembly of FIG. 5C, according to an example of the presently disclosed subject matter;
+FIG. 5E shows schematically the AF and OIS movements of the lens module and the OIS tilt movement of the OPFE, according to an example of the presently disclosed subject matter;
+FIG. 6 shows various views of another embodiment of an OPFE actuation sub-assembly, in which the OPFE is in the form of a prism, according to an example of the presently disclosed subject matter: (a) isometric view, (b) external side view, (c) internal side view and (d) bottom isometric view;
+FIG. 7 shows details of an actuator in a folded camera module disclosed herein, according to an example of the presently disclosed subject matter;
+FIG. 8 shows the actuator of FIG. 7 along a cut A-A shown in FIG. 7 in an isometric view;
+FIG. 9A shows the actuator of FIG. 7 along a cut A-A shown in FIG. 7 in a side view;
+FIG. 9B shows a magnetic simulation along the same cut A-A, where the arrows show the magnetic field direction, according to an example of the presently disclosed subject matter;
+FIG. 10 shows an arrangement for lens actuation with three actuators, according to an example of the presently disclosed subject matter;
+FIG. 11 shows an arrangement for lens actuation with two actuators, according to an example of the presently disclosed subject matter.
+FIG. 12A shows schematically an isometric view of another folded camera module comprising both AF and OIS mechanisms, according to an example of the presently disclosed subject matter;
+FIG. 12B shows schematically an isometric view of the dual-aperture camera of FIG. 12A with the folded lens module removed from its mounting, according to an example of the presently disclosed subject matter;
+FIG. 12C shows schematically an isometric view of the dual-aperture camera of FIG. 12A with the folded lens module in (a) a regular view and (b) turned upside down, according to an example of the presently disclosed subject matter; and
+FIG. 13 shows schematically a magnet in the folded lens module of FIG. 12C coated with an absorption and scattering coating, according to an example of the presently disclosed subject matter.
+DETAILED DESCRIPTION
+In the description below (and as shown at least in FIG. 2) a reflecting element (OPFE) 208 reflects light from a first optical path or direction 205 to a second optical path or direction 206 (the latter converging with the second optical axis). Both the first and second optical directions define a plane (herein “first plane”) that contains both optical axes.
+The following system of orthogonal X-Y-Z coordinates is chosen by way of example and for explanation purposes only: the Z axis is parallel to (or coaxial with) the second optical axis, the second optical axis being an axis of the folded camera module described below; the Y axis is orthogonal to a first optical axis and to the second optical axis; the X-axis is orthogonal to the Y and Z axes.
+FIG. 2A shows schematically an isometric view of a folded camera module numbered 200, according to an example of the presently disclosed subject matter. Folded camera module 200 comprises an image sensor 202 having an imaging surface in the X-Y plane, a lens module 204 with an optical axis 206 defined above as “second optical axis” and an OPFE 208 having a surface plane 210 tilted to the image sensor surface, such that light arriving along a first optical path or direction 205 is tilted by the OPFE to the second optical axis or direction 206.
+Folded camera module 200 further comprises a lens actuation sub-assembly 230 (shown in FIG. 4) for moving lens module 204 in the Y-Z plane (“second plane”). Lens actuation sub-assembly 230 comprises a lens barrel 214 (made for example from plastic), which houses lens elements 204. Lens actuation sub-assembly 230 further comprises a hanging structure comprising four flexible hanging members 216 a-d that hang lens barrel 214 over a base 218 (see FIG. 4). Members 216 a-d are parallel to each other. In some embodiments, members 216 a-d may be in the form of four wires and may be referred to as “wire springs” or “poles”. Hanging members 216 a-d allow in-plane motion which is known in the art and described for example in Applicant's published PCT patent application No. WO2015/068056, the description and figures of which are incorporated herein by reference in their entirety. The hanging structure with members 216 a-d thus allows a first type of motion of the lens module relative to the base in substantially the Y-Z plane under actuation by three actuators.
+An actuator can be for example of a type sometimes referred in the art as “voice coil motor” (VCM). Lens actuation sub-assembly 230 further comprises three magnets 222 a-c (shown in FIG. 4) that are part of three magnetic structures (e.g. VCMs) referred to hereafter as first actuator, second actuator and third actuator, respectively. Each actuator comprises a coil in addition to a respective magnet. Thus, the first actuator comprises magnet 222 a and a coil 224 a, the second actuator comprises magnet 222 b and a coil 224 b and the third actuator comprises magnet 222 c and a coil 224 c.
+Camera module 200 further comprises an OPFE actuation sub-assembly that allows tilting of OPFE 208. A first embodiment numbered 260 of such an actuation sub-assembly is shown in FIGS. 5A-E.
+FIG. 2B shows schematically a functional block diagram of device 250 that includes a folded camera module such as module 200, operative to perform AF and OIS. The device can be for example a portable electronic device such as a smart-phone. Device 250 includes, in addition to folded camera module 200, a gyroscope 262, an OIS/AF actuation driver/controller 264 (also referred to simply as “actuation controller”) and a portable device/phone controller 266. The folded camera module is shown including elements described above and below. The performance of OIS and AF by device (e.g. a smart-phone) 250 is described in detail below. In general, gyroscope 262 provides data input indicative of tilt in at least one direction to controller 264. Similarly, position sensors 226 a-c and 246 (the latter described below) are configured to provide position inputs to driver/controller 264. Device/phone controller 266 is coupled to the image sensor and is configured to provide instructions to actuation controller 264. The instructions include, for example, AF desired position and/or OIS toggle on/off. Actuation controller 264 can provide actuation commands, responsive to the data input from gyroscope and position sensors, to actuation coils 224 a-c and 244 (the latter described below) for generating motion compensating for the detected tilt and/or for obtaining a desired focus position.
+Folded camera module 200 can for example be included in a folded-lens dual-aperture camera described in Applicant's US published patent application US 20160044247. FIG. 3A shows schematically an isometric view of a folded-lens dual-aperture camera 300 that includes the folded camera module of FIG. 2 together with a second, upright camera module. FIG. 3B shows schematically camera 300 in an external view. Camera 300 includes, in addition to folded camera module 200, an upright (non-folded) camera module 280 having a first optical axis 252 which is perpendicular to the second optical axis and to the second plane. The height of the dual-aperture camera is indicated by H. H can be for example between 4 mm-7 mm.
+FIG. 4 shows, for clarity, camera 300 including folded camera module 200 with lens actuation sub-assembly 230 (comprising lens barrel 214 and its poles 216 a-d) disassembled from base 218 and turned upside down, showing an underside with two plate sections 220 a and 220 b. The three magnets 222 a-c are positioned (e.g. rigidly assembled/mounted/glued) on the underside plate sections.
+The three corresponding coils 224 a-c are positioned on base 218. When lens actuation sub-assembly 230 is assembled, magnets 222 a, 222 b and 222 c are located just above coils 224 a, 224 b and 224 c, respectively. As described below (“magnetic operation” section), in operation, a Lorentz force may be applied on coil 224 a along the Y axis direction and on two magnets 222 b-c along the Z axis direction. As further described below (“mechanical operation” section), having these three forces on the three magnets allows three mechanical degrees of freedom in the motion of the center of mass of lens actuation sub-assembly 230: linear Y and Z motions, and tilt around X axis motion.
+The motion of the lens actuation sub-assembly 230 in the Y and Z directions (i.e. in the Y-Z plane) can be measured by position sensors, for example Hall-bar sensors (or just “Hall-bars”) 226 a-c which are coupled to the magnetic field created by, respectively, magnets 222 a-c. When the lens module moves in the Y-Z plane, the magnetic field sensed by Hall-bars 226 a-c changes and the motion can be sensed at three points, as known in the art. This allows determination of three types of motion, i.e. Y direction motion, Z direction motion and tilt around X axis motion.
+FIG. 5A shows an exploded isometric view of OPFE actuation sub-assembly 260, according to an example of the presently disclosed subject matter. According to the illustrated example, OPFE actuation sub-assembly 260 includes hinge springs 236 a-b that suspend the prism and which can convert linear to angular motion. These hinge springs allow tilting of prism 208 around a hinge axis 232, which is parallel to, or along the Y axis. The tilt can be for example ±1° from a zero (rest) position of the prism.
+In an embodiment shown in FIG. 5A, the hinge springs may be in the form of single-part flexible supports 236 a and 236 b, each attached at a side of the prism. The prism and its reflecting surface plane 210, hinge axis 232 and flexible support 236 b are also shown in a side view in FIG. 5B. Actuation sub-assembly 260 further includes an actuator 238 (referred to hereinafter as a “fourth” actuator) that includes a magnet 242 rigidly coupled to prism 208 (in the illustrated example—through an adaptor 215) and a coil 244 rigidly coupled to a base 212′.
+Regarding a hinge spring, it can be designed in at least two different ways. In one design, mentioned and shown in FIGS. 5A and 5B, the hinge spring may comprise two single-part flexible supports 236 a and 236 b attached at each side of the prism. Another design is illustrated in FIGS. 5C and 5D. FIG. 5C shows an isometric exploded view of another embodiment of an OPFE actuation sub-assembly 260′, in which the OPFE is in the form of a mirror 208. FIG. 5D shows actuation sub-assembly 260′ assembled, in a side view. Actuation sub-assembly 260′ includes a hinge spring having two sets of leaf springs mounted at each side of the mirror, a first set having two spring members 240 a and 240 b perpendicular to each other and a second set having two spring members 240 c and 240 d perpendicular to each other. The rotation axis will be around a virtual line drawn between the intersection points of each springs set 240 a-b and 240 c-d. FIG. 5E shows schematically the AF and OIS movements of the lens module and the OIS tilt movement of the OPFE.
+The hinge spring of any of the embodiments presented may convert force in any direction parallel to the X-Z plane to a torque around the Y axis such that tilt around the Y axis is created.
+As described with reference to FIGS. 5C and 5D and further below, in operation, a Lorentz force may be applied between coil 244 and magnet 242 in order to move magnet 242 in a direction indicated by an arrow 254 (FIG. 5D). This force (and magnet movement) is then converted by the hinge to a tilt motion around the Y axis indicated by an arrow 256 (FIG. 5D). The motion is measured by a Hall-bar sensor 246. In camera module 200, the fourth actuator is positioned such that the force applied is in the +X−Z or −X+Z direction, (at 45 degrees to both X and Z axes, see below “magnetic operation” section). However, in other examples, the orientation of the fourth actuator can be such that the force is directed at any angle in the X-Z plane, as long as torque is applied around the hinge axis 232 (for example the fourth actuator as shown in the embodiment of FIG. 5A). The actuators and Hall-bars sensors of camera module 200 are listed in Table 1.
+According to the presently disclosed subject matter, camera module 200 further comprises or is otherwise operatively connected to at least one controller (e.g. controller 264) configured to control operation of the lens and OPFE actuation sub-assemblies 230 and 260 for generating movement to compensate for camera shakes that tilt the camera module when in use, thereby providing OIS. The controller is configured to receive sensed data indicative of lens and OPFE position and tilt data from the gyro and, based on the received data, generate instructions for causing actuation sub-assemblies 230 and 260 to create movement of the lens module and OPFE that compensates for unintentional tilt of the folded camera module (and thus provide OIS).
+The OPFE tilt compensates for camera tilt about the Y axis. The folded lens module movement in the Y direction compensates for camera tilt around the Z axis. The controller receives data on the tilt around Y and tilts the OPFE about Y axis accordingly.
+The controller receives data on the tilt around Z and moves the lens module in the Y direction accordingly. There may be undesired tilt of the lens module about the X axis. As explained further below, in some examples, the controller can be configured to receive data indicative of such undesired tilt and to provide commands to actuation sub-assemblies 230 and 260 for creating tilt power to tilt in an opposite direction to the undesired tilt.
+FIG. 6 shows various views of another embodiment of an OPFE actuation sub-assembly, numbered 290, in which the OPFE is in the form of a prism 308 with a reflecting surface 310, according to an example of the presently disclosed subject matter: (a) isometric view, (b) external side view, (c) internal side view and (d) bottom isometric view.
+OPFE actuation sub-assembly 290 comprises a hanging structure that includes four flexible hanging members 292 a-d that hang prism 308 over a base 320. Flexible hanging members 292 a-d are similar to flexible hanging members 216 a-d, except that instead of being parallel, they are tilted. They are therefore referred to as “tilted hanging members”. Tilted hanging members 292 a-d are fixedly mounted on base 320 at one respective member end and attached to the prism at another member end through hinge points 298 a and 298 b and through side panels 296 a and 296 b. In particular, tilted hanging members 292 a and 292 b are attached through hinge point 298 a to side panel 296 a and tilted hanging members 292 c and 292 d are attached through hinge point 298 b to side panel 296 b. The side panels are fixedly coupled to opposite sides of the prism. Tilted hanging members 292 a-d allow tilting of prism 308 around a (virtual) hinge axis 294, which is parallel to, or along the Y axis. Actuation sub-assembly 290 further includes a “fifth” actuator that includes a magnet 344 rigidly coupled to prism 308 and a coil 346 rigidly coupled to base 320. This actuator serves in a similar capacity as the fourth actuator comprising magnet 244 and coil 246.
+In operation, a Lorentz force may be applied between coil 344 and magnet 346 to move magnet 346 either to the left (arrow 352) or to the right (arrow 354). This force (and magnet movement) is then converted by the tilted hanging members to a tilt (“pendulum”) motion around axis 294. The tilt may be typically ±1° from a zero (rest) position of the prism. The motion is measured by a Hall-bar (not shown) as explained above. Such an embodiment allows increase in the Hall-bar sensitivity to tilt actuation, by increasing the relative motion between magnet 244 and the Hall-bar.
+Optical Operation of the Actuator Elements
+In compact cameras, focusing and in particular auto-focusing (AF) is performed by shifting the entire lens module with respect to the camera image sensor, such that the following equation is fulfilled:
+As disclosed herein, OIS is configured to compensate for camera shakes that shift the camera module in six degrees of freedom (X-Y-Z, roll, yaw and pitch). However, as mentioned above, the linear motion in X-Y-Z negligibly affects the image quality and does not have to be compensated for. Yaw motion of the camera module (tilt around the Z axis in camera module 200) results in image motion along the Y axis on the image sensor. Yaw motion can then be compensated in camera module 200 by a shift of the lens module 204 along the Y axis. Pitch motion of the camera module (tilt around the Y axis in camera module 200) will result in image motion along the X axis on the sensor. Pitch motion can then be compensated in camera module 200 by a tilt of prism 206 around the Y axis.
+Magnetic Operation of the Actuator Elements
+Operation of each of the four actuators will now be referred to, by describing in detail, and as an example of operation of the first actuator. Operation of the second, third, fourth and fifth actuators is similar. FIG. 7 shows elements of the first actuator, i.e. coil 224 a and magnet 222 a, with the associated Hall-bar 226 a. Coil 224 a can have for example a disco-rectangle (stadium) shape, such that it has one long vertex 710 and one short vertex 712. According to one example, coil 224 a can be made from a copper wire coated by a thin plastic layer (coating) having inner/outer diameters, respectively in the range of 40-60 μm, with several tens of turns per coil, such that the total resistance is typically in the order of 10-30 ohms per coil. Magnet 222 a can be for example a permanent magnet, made from a neodymium alloy (e.g. Nd2Fe14B) or a samarium-cobalt alloy (e.g. SmCo5). Magnet 222 a can be fabricated (e.g. sintered) such that it changes the magnetic poles' direction: on the left side the north magnetic pole faces the negative X direction, while on the right side the north-pole faces the positive X direction. Such “pole changing” magnets are known in the art, and described for example in PCT patent application WO2014/100516A1.
+FIG. 8 and FIG. 9A show the first actuator along a cut A-A shown in FIG. 7 in isometric and side views respectively. Coil 224 a is shown to have a 60 μm diameter and 48 coil turns. In FIG. 9A, a dot “.” mark indicates current exiting the page plane toward the reader (positive Z direction) and an “x” mark indicates current in the negative Z direction. The magnetic poles of magnet 222 a are indicated, as is the position of Hall-bar 226 a.
+In the embodiment presented here, the Hall-bar is located in the vacant area in the middle of coil 224 a. In other embodiments, the Hall-bar may be located in another position (e.g. next to the coil), as long as it magnetically coupled to the corresponding magnet element.
+Four Wire-Springs Mechanical Structure
+A mechanical structure comprising four round wires can be used for in-plane motion in OIS mechanisms, see e.g. Applicant's published PCT patent application WO2015/060056, the description and figures of which are incorporated herein by reference in their entirety. Table 2 below lists examples of first mode of motion in all six degrees of freedom for wires with diameter in the range of 50-100 μm made for example from metal (e.g. stainless-steel alloy) and carrying a dual-axis actuation assembly with a total mass of 0.5-1 gram.
+The typical frequency range for motion in three modes, the Y mode, the Z mode and the “tilt around X” mode is much lower than for the other three modes. This means that physically, motion in X mode, “tilt around Y” mode and “tilt around Z” mode are much stiffer and unlikely to occur under low forces like those that exist in the system (on the order of 0.01N).
+As explained above, motion along the Y axis allows OIS performance, while motion along the Z axis allows AF performance. In known single aperture camera modules (for example as described in PCT/IB2014/062181), a tilt motion around the X-axis (in the embodiments shown here an axis parallel to the first optical axis) will not influence the image, since lens modules are axis-symmetric around this axis. In the embodiments of folded-lens cameras disclosed herein the X axis lies in the plane containing the first and second optical paths and is perpendicular to the second optical axis. In the cameras disclosed herein, an X-axis-tilt may cause distortion or shift the image, and is thus undesired. Therefore, two “undesired X-axis tilt” prevention methods are described below.
+A first method to prevent X-axis-tilt is to actively cancel it. This method is described with reference to camera module 200. As explained above, -operation of the first actuator creates a force on magnet 222 a in the ±Y direction, while operation of second and third actuators creates a force on magnets 222 b and 222 c in the ±Z direction. However, since the forces applied on the magnets are also applied on lens actuation sub-assembly 230, which is a rigid body, translation of the force on each magnet is also translated to a torque on the mass center of lens actuation sub-assembly 230. Table 3 shows the result of force applied on each of magnets 222 a-c to the mass center of lens actuator sub-assembly 230. Using a combination of the three (first, second and third) actuators can create force in the Z-Y plane and torque around the X axis such that the desired motion is achieved, namely creation of Y motion for OIS, creation of Z motion for auto-focus, and removal of any unwanted X-axis-tilt.
+A second method to prevent X-axis tilt is “passive”, and is based on reducing the torque forces created by the first, second and third actuators. This method is demonstrated schematically using the actuator arrangements shown in FIG. 10 and FIG. 11.
+FIG. 10 shows a lens barrel 1014 carrying a lens module 1004 with components of three (first, second and third) actuators similar to the actuators in embodiments above (magnets 1022 a, 1022 b and 1022 c located just above coils 1024 a, 1024 b and 1024 c, respectively). Actuators including these elements do not produce undesired tilt around the X axis. Note that magnet 1022 b and coil 1024 b are shown here as extending substantially (i.e. having a length dimension along) the entire width of the lens barrel (in the Y direction). This arrangement allows the magnet and coil to be positioned between the lens barrel and the sensor. This is beneficial, since if even part of the actuator is positioned below the lens barrel, the total height of the module (in the X direction) increases below a required height. Exemplarily, the length of magnet 1022 b and coil 1024 b in the Y direction may be ca. 7-8 mm and the width of magnet 1022 b and coil 1024 b in the Z direction may be ca. 2-3 mm. The height of all coils is exemplarily ca. 0.5 mm. The arrangement of the first, second and third actuators is such that the torque on mass center of lens actuation sub-assembly is minimal. That is, these actuators do not produce undesired tilt around the X axis. Table 4 shows the translation of force on each of magnets 1022 a-c to the mass center of the lens actuation sub-assembly.
+FIG. 11 shows an arrangement for lens actuation with two actuators, according to an example of the presently disclosed subject matter. The actuator arrangement uses only two (e.g. first and second) actuators of the actuators in FIG. 10. This arrangement is simpler, as it may achieve the same result while removing one actuator from the arrangement of FIG. 10.
+FIG. 12A shows schematically an isometric view of another folded camera module numbered 1100, according to an example of the presently disclosed subject matter. Note that the X-Y-Z coordinate system is oriented differently than in FIGS. 1-11. Folded camera module 1100 comprises an image sensor 1102 having an imaging surface in the X-Y plane, a lens module 1104 with an optical axis 1106 defined above as “second optical axis” and an OPFE 1108 having a surface plane 1110 tilted to the image sensor surface, such that light arriving along a first optical path or direction 1105 is tilted by the OPFE to the second optical axis or direction 1106.
+FIG. 12B shows folded camera module 1100 with the folded lens module removed from its mounting. FIG. 12C shows the folded lens module in (a) a regular isometric view and (b) turned upside down.
+In an embodiment, camera module 1100 comprises a lens actuation sub-assembly for moving lens module 1104 for autofocus in the Z direction. This sub-assembly may include a single actuator with a magnet 1122 ab and a coil 1124 b. In other embodiments, camera module 1100 may comprise a lens actuation sub-assembly for moving lens module 1104 in the Y-Z plane. However, in contrast with the 3-actuator lens actuation sub-assembly shown in FIGS. 3 and 10, the actuation sub-assembly in folded camera module 1100 comprises four actuators operating on the lens module. In other words, an additional “sixth” actuator is added to the first, second and third actuators of the lens actuation sub-assembly: here, the first actuator includes a magnet 1122 ab and a coil 1124 a, the second actuator includes magnet 1122 ab and coil 1124 b, the third actuator includes a magnet 1122 c and a coil 1124 c. The added (“sixth”) actuator includes magnet 1122 d and a coil 1124 d. The magnet and coil arrangement is similar to that in FIG. 10, in that magnet 1122 b and coil 1124 b are positioned between the lens module and the image sensor, enabling efficient Z-axis actuation (for autofocus). The actuators including magnet 1122 ab and coil 1124 a, magnet 1122 ab and coil 1124 b and magnet 1122 d and a coil 1124 d may be used actively to prevent undesirable tilt around the X-axis. Two Hall-bar sensors 1126 b′ and 1126 b″ measure displacement in the Z direction and tilt around the X axis. A Hall-bar sensor 1126 c measures displacement in the Y direction.
+From the above it is clear that if Ly is increased by a factor of 2 (everything else being equal), then Ef will increase by a factor greater than 2. Thus, the longer the coil in the Y direction, the better. The positioning of magnet 1122 c between the lens module and the image sensor advantageously allows to lengthen the magnet in the Y direction to approximately the lens module carrier width. Exemplarily, coil 1124 c has a long dimension or vertex (typically ca. 7-8 mm) in the Y direction and a short dimension or vertex (typically ca. 2-3 mm) in the Z direction. In general, for single- or multi-turn coils, the longer the coil in the direction perpendicular to the magnetic force the more efficient will be the magnetic engine utilizing this coil.
+The positioning of the magnet of the AF actuator between the lens module and image sensor may cause light reflections of light arriving along the optical axis of the lens (Z-axis). Such reflections may affect the image acquired at the folded camera image sensor. In order to prevent such reflections, the magnet (i.e. magnet 1122 c) may be a coated with an absorption and scattering coating (FIG. 12C and FIG. 13), for example an Actar Black Velvet coating manufactured by Actar Ltd., Kiryat Gat, Israel. Alternatively or in addition, the magnet can have perturbations in the shape of waves or other shapes to further scatter reflected light. Alternatively, a wavy thin plate structure (“yoke”) 1130 with an absorption and scattering coating as above may be attached to the magnet.
+While this disclosure has been described in terms of certain embodiments and generally associated methods, alterations and permutations of the embodiments and methods will be apparent to those skilled in the art. For example, while the incorporation of a folded camera module described herein in a dual-aperture camera is described in some detail, a folded camera module may be incorporated in a multi-aperture camera having more than two camera modules. For example, while the use of Hall-bars as an example of position sensors is described in detail, other position sensors (for example micro-electro-mechanical system (MEMS)-type position sensors) may be used for purposes set forth herein. The disclosure is to be understood as not limited by the specific embodiments described herein.
+It is emphasized that citation or identification of any reference in this application shall not be construed as an admission that such a reference is available or admitted as prior art.
+[PATENT_CITATIONS]:
+US9927600B2 | 2015-04-16 | 2018-03-27 | Corephotonics Ltd | Method and system for providing auto focus and optical image stabilization in a compact folded camera
+[PATENT_CITATIONS]:
+US3274552A | 1962-06-25 | 1966-09-20 | Martin Marietta Corp | Adaptive missile control system
+US4199785A | 1979-01-05 | 1980-04-22 | Honeywell Inc. | Electronic zoom system
+US5099263A | 1984-11-10 | 1992-03-24 | Minolta Camera Kabushiki Kaisha | Variable focal length camera
+JPH01237629A | 1988-03-18 | 1989-09-22 | Fuji Photo Film Co Ltd | Single-lens reflex camera with ae, af and confirming function
+DE58902538D1 | 1988-05-19 | 1992-12-03 | Siemens Ag | METHOD FOR OBSERVING A SCENE AND DEVICE FOR IMPLEMENTING THE METHOD.
+DE3927334C1 | 1989-08-18 | 1991-01-10 | Messerschmitt-Boelkow-Blohm Gmbh, 8012 Ottobrunn, De | 
+US5032917A | 1990-03-12 | 1991-07-16 | Rca Licensing Corporation | Video signal blending apparatus
+JPH0443773A | 1990-06-11 | 1992-02-13 | Matsushita Electric Ind Co Ltd | Arithmetic circuit
+US5041852A | 1990-10-18 | 1991-08-20 | Fjui Photo Film Co., Ltd. | Camera shake correction system
+JP3261152B2 | 1991-03-13 | 2002-02-25 | シャープ株式会社 | Imaging device having a plurality of optical systems
+US5394520A | 1991-09-26 | 1995-02-28 | Hughes Aircraft Company | Imaging apparatus for providing a composite digital representation of a scene within a field of regard
+US5657402A | 1991-11-01 | 1997-08-12 | Massachusetts Institute Of Technology | Method of creating a high resolution still image using a plurality of images and apparatus for practice of the method
+US5248971A | 1992-05-19 | 1993-09-28 | Mandl William J | Method and apparatus for multiplexed oversampled analog to digital modulation
+JPH06177706A | 1992-12-08 | 1994-06-24 | Sony Corp | Signal processing unit
+KR940017747A | 1992-12-29 | 1994-07-27 | 에프. 제이. 스미트 | Image processing device
+US5682198A | 1993-06-28 | 1997-10-28 | Canon Kabushiki Kaisha | Double eye image pickup apparatus
+US6128416A | 1993-09-10 | 2000-10-03 | Olympus Optical Co., Ltd. | Image composing technique for optimally composing a single image from a plurality of digital images
+US6714665B1 | 1994-09-02 | 2004-03-30 | Sarnoff Corporation | Fully automated iris recognition system utilizing wide and narrow fields of view
+CA2155719C | 1994-11-22 | 2005-11-01 | Terry Laurence Glatt | Video surveillance system with pilot and slave cameras
+US5768443A | 1995-12-19 | 1998-06-16 | Cognex Corporation | Method for coordinating multiple fields of view in multi-camera
+US5982951A | 1996-05-28 | 1999-11-09 | Canon Kabushiki Kaisha | Apparatus and method for combining a plurality of images
+US5926190A | 1996-08-21 | 1999-07-20 | Apple Computer, Inc. | Method and system for simulating motion in a computer graphics application using image registration and view interpolation
+JPH10126796A | 1996-09-12 | 1998-05-15 | Eastman Kodak Co | Digital camera for dynamic and still images using dual mode software processing
+US5960218A | 1997-02-18 | 1999-09-28 | Mobi Corporation | Dual focal length camera
+US5940641A | 1997-07-10 | 1999-08-17 | Eastman Kodak Company | Extending panoramic images
+US6148120A | 1997-10-30 | 2000-11-14 | Cognex Corporation | Warping of focal images to correct correspondence error
+US6341180B1 | 1997-12-18 | 2002-01-22 | Cellavision Ab | Image content autofocus for microscopy using a noise-insensitive focus filter
+JP3695119B2 | 1998-03-05 | 2005-09-14 | 株式会社日立製作所 | Image synthesizing apparatus and recording medium storing program for realizing image synthesizing method
+US20020063711A1 | 1999-05-12 | 2002-05-30 | Imove Inc. | Camera system with high resolution image inside a wide angle view
+US20020075258A1 | 1999-05-12 | 2002-06-20 | Imove Inc. | Camera system with high resolution image inside a wide angle view
+US6738073B2 | 1999-05-12 | 2004-05-18 | Imove, Inc. | Camera system with both a wide angle view and a high resolution view
+US6208765B1 | 1998-06-19 | 2001-03-27 | Sarnoff Corporation | Method and apparatus for improving image resolution
+US6611289B1 | 1999-01-15 | 2003-08-26 | Yanbin Yu | Digital cameras using multiple sensors with multiple lenses
+US6346950B1 | 1999-05-20 | 2002-02-12 | Compaq Computer Corporation | System and method for display images using anamorphic video
+US7038716B2 | 1999-07-30 | 2006-05-02 | Pixim, Inc. | Mobile device equipped with digital image sensor
+US7015954B1 | 1999-08-09 | 2006-03-21 | Fuji Xerox Co., Ltd. | Automatic video system using multiple cameras
+US6650368B1 | 1999-10-26 | 2003-11-18 | Hewlett-Packard Development Company, Lp. | Digital camera and method of enhancing zoom effects
+US6643416B1 | 1999-11-30 | 2003-11-04 | Eastman Kodak Company | Method for determining necessary resolution for zoom and crop images
+US20020005902A1 | 2000-06-02 | 2002-01-17 | Yuen Henry C. | Automatic video recording system using wide-and narrow-field cameras
+JP4501239B2 | 2000-07-13 | 2010-07-14 | ソニー株式会社 | Camera calibration apparatus and method, and storage medium
+US7002583B2 | 2000-08-03 | 2006-02-21 | Stono Technologies, Llc | Display of images and image transitions
+US6778207B1 | 2000-08-07 | 2004-08-17 | Koninklijke Philips Electronics N.V. | Fast digital pan tilt zoom video
+US7345277B2 | 2000-08-09 | 2008-03-18 | Evan Zhang | Image intensifier and LWIR fusion/combination system
+US7339621B2 | 2001-12-13 | 2008-03-04 | Psion Teklogix Systems, Inc. | Imager output signal processing
+JP2002214662A | 2001-01-23 | 2002-07-31 | Olympus Optical Co Ltd | Shake correcting device for optical device
+US6741250B1 | 2001-02-09 | 2004-05-25 | Be Here Corporation | Method and system for generation of multiple viewpoints into a scene viewed by motionless cameras and for presentation of a view path
+US7346217B1 | 2001-04-25 | 2008-03-18 | Lockheed Martin Corporation | Digital image enhancement using successive zoom images
+JP2002341220A | 2001-05-14 | 2002-11-27 | Olympus Optical Co Ltd | Optical instrument
+GB0116877D0 | 2001-07-10 | 2001-09-05 | Hewlett Packard Co | Intelligent feature selection and pan zoom control
+JP5048195B2 | 2001-09-17 | 2012-10-17 | オリンパス株式会社 | Optical system
+US6680748B1 | 2001-09-27 | 2004-01-20 | Pixim, Inc., | Multi-mode camera and method therefor
+US20030093805A1 | 2001-11-15 | 2003-05-15 | Gin J.M. Jack | Dual camera surveillance and control system
+JP4198449B2 | 2002-02-22 | 2008-12-17 | 富士フイルム株式会社 | Digital camera
+GB2388265B | 2002-04-30 | 2005-10-12 | Hewlett Packard Co | Improvements in and relating to processing of images
+JP4657564B2 | 2002-04-30 | 2011-03-23 | イーストマン  コダック  カンパニー | Electronic still camera and image processing method
+CA2386560A1 | 2002-05-15 | 2003-11-15 | Idelix Software Inc. | Controlling optical hardware and dynamic data viewing systems with detail-in-context viewing tools
+JP3870124B2 | 2002-06-14 | 2007-01-17 | キヤノン株式会社 | Image processing apparatus and method, computer program, and computer-readable storage medium
+US6839067B2 | 2002-07-26 | 2005-01-04 | Fuji Xerox Co., Ltd. | Capturing and producing shared multi-resolution video
+US20040061788A1 | 2002-09-26 | 2004-04-01 | Logitech Europe S.A. | Multiple mode capture button for a digital camera
+US7321470B2 | 2002-10-08 | 2008-01-22 | Olympus Corporation | Camera
+GB2394852B | 2002-10-31 | 2006-12-20 | Hewlett Packard Co | Image capture systems using motion detection
+JP2004219569A | 2003-01-10 | 2004-08-05 | Olympus Corp | Electronic image pickup unit
+JP3861815B2 | 2003-01-17 | 2006-12-27 | コニカミノルタフォトイメージング株式会社 | Camera with image stabilization function
+US20040240052A1 | 2003-06-02 | 2004-12-02 | Pentax Corporation | Multiple-focal imaging device, and a mobile device having the multiple-focal-length imaging device
+US7596284B2 | 2003-07-16 | 2009-09-29 | Hewlett-Packard Development Company, L.P. | High resolution image reconstruction
+US7619683B2 | 2003-08-29 | 2009-11-17 | Aptina Imaging Corporation | Apparatus including a dual camera module and method of using the same
+JP2005208194A | 2004-01-21 | 2005-08-04 | Konica Minolta Photo Imaging Inc | Photographing apparatus
+KR20050090780A | 2004-03-10 | 2005-09-14 | 삼성전자주식회사 | Image photographing apparatus
+WO2006040687A2 | 2004-07-19 | 2006-04-20 | Grandeye, Ltd. | Automatically expanding the zoom capability of a wide-angle video camera
+US7964835B2 | 2005-08-25 | 2011-06-21 | Protarius Filo Ag, L.L.C. | Digital cameras with direct luminance and chrominance detection
+US7916180B2 | 2004-08-25 | 2011-03-29 | Protarius Filo Ag, L.L.C. | Simultaneous multiple field of view digital cameras
+US7564019B2 | 2005-08-25 | 2009-07-21 | Richard Ian Olsen | Large dynamic range cameras
+CN101427372B | 2004-08-25 | 2012-12-12 | 普罗塔里斯菲洛有限责任公司 | Apparatus for multiple camera devices and method of operating same
+US7465107B2 | 2004-09-21 | 2008-12-16 | Canon Kabushiki Kaisha | Photographing apparatus and control method therefor
+KR101054344B1 | 2004-11-17 | 2011-08-04 | 삼성전자주식회사 | Thin film transistor array panel and manufacturing method thereof
+US7688364B2 | 2004-12-10 | 2010-03-30 | Ambarella, Inc. | Decimating and cropping based zoom factor for a digital camera
+KR100636969B1 | 2004-12-30 | 2006-10-19 | 매그나칩 반도체 유한회사 | image sensor with built-in ISP and dual camera system
+US7573514B2 | 2005-02-03 | 2009-08-11 | Eastman Kodak Company | Digital imaging system with digital zoom warning
+US7663662B2 | 2005-02-09 | 2010-02-16 | Flir Systems, Inc. | High and low resolution camera systems and methods
+US20060187322A1 | 2005-02-18 | 2006-08-24 | Janson Wilbert F Jr | Digital camera using multiple fixed focal length lenses and multiple image sensors to provide an extended zoom range
+US7256944B2 | 2005-02-18 | 2007-08-14 | Eastman Kodak Company | Compact image capture assembly using multiple lenses and image sensors to provide an extended zoom range
+US7236306B2 | 2005-02-18 | 2007-06-26 | Eastman Kodak Company | Digital camera using an express zooming mode to provide expedited operation over an extended zoom range
+US7206136B2 | 2005-02-18 | 2007-04-17 | Eastman Kodak Company | Digital camera using multiple lenses and image sensors to provide an extended zoom range
+US7561191B2 | 2005-02-18 | 2009-07-14 | Eastman Kodak Company | Camera phone using multiple lenses and image sensors to provide an extended zoom range
+KR100658150B1 | 2005-04-08 | 2006-12-15 | 삼성전기주식회사 | Camera module and method of manufacturing the same
+KR100770846B1 | 2005-05-13 | 2007-10-26 | 삼성전자주식회사 | Auto focus controlling apparatus for camera module
+WO2006137253A1 | 2005-06-22 | 2006-12-28 | Matsushita Electric Industrial Co., Ltd. | Image forming device, and image forming method
+JP2007025569A | 2005-07-21 | 2007-02-01 | Olympus Imaging Corp | Digital single-lens reflex camera
+JP2007033879A | 2005-07-27 | 2007-02-08 | Sony Corp | Imaging lens device and imaging apparatus
+US7424218B2 | 2005-07-28 | 2008-09-09 | Microsoft Corporation | Real-time preview for panoramic images
+JP4573725B2 | 2005-08-01 | 2010-11-04 | イーストマン  コダック  カンパニー | Imaging apparatus having a plurality of optical systems
+JP4573724B2 | 2005-08-01 | 2010-11-04 | イーストマン  コダック  カンパニー | Imaging apparatus having a plurality of optical systems
+EP1950608B1 | 2005-11-14 | 2010-09-22 | Nikon Corporation | Image shake correction device and camera
+JP4788953B2 | 2005-11-16 | 2011-10-05 | ソニー株式会社 | Imaging device and zoom lens
+US8238695B1 | 2005-12-15 | 2012-08-07 | Grandeye, Ltd. | Data reduction techniques for processing wide-angle video
+US20070177025A1 | 2006-02-01 | 2007-08-02 | Micron Technology, Inc. | Method and apparatus minimizing die area and module size for a dual-camera mobile device
+US20090122406A1 | 2006-02-06 | 2009-05-14 | Jarkko Rouvinen | Optical Image Stabilizer Using Gimballed Prism
+JP4579842B2 | 2006-02-06 | 2010-11-10 | イーストマン  コダック  カンパニー | Imaging device
+WO2007091113A1 | 2006-02-06 | 2007-08-16 | Nokia Corporation | Method and device for position sensing in an imaging system
+CN101384939B | 2006-02-10 | 2010-06-02 | 松下电器产业株式会社 | Lens barrel, image pickup device, lens barrel inspecting method, and lens barrel manufacturing method
+US9182228B2 | 2006-02-13 | 2015-11-10 | Sony Corporation | Multi-lens array system and method
+US7708478B2 | 2006-04-13 | 2010-05-04 | Nokia Corporation | Actuator mechanism and a shutter mechanism
+US7773121B1 | 2006-05-03 | 2010-08-10 | The United States Of America As Represented By The Administrator Of The National Aeronautics And Space Administration | High-resolution, continuous field-of-view (FOV), non-rotating imaging system
+KR100749337B1 | 2006-06-13 | 2007-08-14 | 삼성전자주식회사 | Method for photography using a mobile terminal with plural lenses and apparatus therefor
+US7737379B2 | 2006-07-19 | 2010-06-15 | Witdouck Calvin J | System and method for sorting larvae cocoons
+US8189100B2 | 2006-07-25 | 2012-05-29 | Qualcomm Incorporated | Mobile device with dual digital camera sensors and methods of using the same
+US7756330B2 | 2006-07-27 | 2010-07-13 | Eastman Kodak Company | Producing an extended dynamic range digital image
+US7667762B2 | 2006-08-01 | 2010-02-23 | Lifesize Communications, Inc. | Dual sensor video camera
+US20080030592A1 | 2006-08-01 | 2008-02-07 | Eastman Kodak Company | Producing digital image with different resolution portions
+JP2008096584A | 2006-10-10 | 2008-04-24 | Nikon Corp | Camera
+US7697053B2 | 2006-11-02 | 2010-04-13 | Eastman Kodak Company | Integrated display having multiple capture devices
+JP4448844B2 | 2006-11-22 | 2010-04-14 | 富士フイルム株式会社 | Compound eye imaging device
+KR100871566B1 | 2006-12-04 | 2008-12-02 | 삼성전자주식회사 | Apparatus and method for preventing shaking of image photographing device
+US7533819B2 | 2007-01-31 | 2009-05-19 | Symbol Technologies, Inc. | Dual camera assembly for an imaging-based bar code reader
+US7978239B2 | 2007-03-01 | 2011-07-12 | Eastman Kodak Company | Digital camera using multiple image sensors to provide improved temporal sampling
+US7729602B2 | 2007-03-09 | 2010-06-01 | Eastman Kodak Company | Camera using multiple lenses and image sensors operable in a default imaging mode
+US7683962B2 | 2007-03-09 | 2010-03-23 | Eastman Kodak Company | Camera using multiple lenses and image sensors in a rangefinder configuration to provide a range map
+US7859588B2 | 2007-03-09 | 2010-12-28 | Eastman Kodak Company | Method and apparatus for operating a dual lens camera to augment an image
+US7676146B2 | 2007-03-09 | 2010-03-09 | Eastman Kodak Company | Camera using multiple lenses and image sensors to provide improved focusing capability
+US8937651B2 | 2007-04-19 | 2015-01-20 | Dvp Technologies Ltd. | Imaging system and method for use in monitoring a field of regard
+US7918398B2 | 2007-06-04 | 2011-04-05 | Hand Held Products, Inc. | Indicia reading terminal having multiple setting imaging lens
+KR100880672B1 | 2007-07-18 | 2009-02-02 | 자화전자 주식회사 | Camera System with Auto-Focus Function and Control Method thereof
+JP5000428B2 | 2007-08-22 | 2012-08-15 | Ｈｏｙａ株式会社 | Imaging device
+US8390729B2 | 2007-09-05 | 2013-03-05 | International Business Machines Corporation | Method and apparatus for providing a video image having multiple focal lengths
+US20090086074A1 | 2007-09-27 | 2009-04-02 | Omnivision Technologies, Inc. | Dual mode camera solution apparatus, system, and method
+JP2009109904A | 2007-10-31 | 2009-05-21 | Sony Corp | Lens barrel and imaging apparatus
+US20090122195A1 | 2007-11-09 | 2009-05-14 | Van Baar Jeroen | System and Method for Combining Image Sequences
+US20090128644A1 | 2007-11-15 | 2009-05-21 | Camp Jr William O | System and method for generating a photograph
+US8310587B2 | 2007-12-04 | 2012-11-13 | DigitalOptics Corporation International | Compact camera optics
+KR20090058229A | 2007-12-04 | 2009-06-09 | 삼성전기주식회사 | Dual camera module
+WO2009097552A1 | 2008-02-01 | 2009-08-06 | Omnivision Cdm Optics, Inc. | Image data fusion systems and methods
+US8115825B2 | 2008-02-20 | 2012-02-14 | Apple Inc. | Electronic device with two image sensors
+US8866920B2 | 2008-05-20 | 2014-10-21 | Pelican Imaging Corporation | Capturing and processing of images using monolithic camera array with heterogeneous imagers
+FI20085510A | 2008-05-28 | 2009-11-29 | Valtion Teknillinen | Zoom camera arrangement that includes multiple sub-cameras
+JP4513906B2 | 2008-06-27 | 2010-07-28 | ソニー株式会社 | Image processing apparatus, image processing method, program, and recording medium
+JP5328249B2 | 2008-07-16 | 2013-10-30 | キヤノン株式会社 | Lens barrel and imaging device
+US8134589B2 | 2008-07-17 | 2012-03-13 | Eastman Kodak Company | Zoom by multiple image capture
+CN102099724B | 2008-07-18 | 2012-11-21 | 松下电器产业株式会社 | Electronic viewfinder device and imaging device
+GB2462095A | 2008-07-23 | 2010-01-27 | Snell & Wilcox Ltd | Processing of images to represent a transition in viewpoint
+US8237807B2 | 2008-07-24 | 2012-08-07 | Apple Inc. | Image capturing device with touch screen for adjusting camera settings
+JP5118751B2 | 2008-09-10 | 2013-01-16 | パナソニック株式会社 | Camera body and imaging device
+US20100097444A1 | 2008-10-16 | 2010-04-22 | Peter Lablans | Camera System for Creating an Image From a Plurality of Images
+CN101394487B | 2008-10-27 | 2011-09-14 | 华为技术有限公司 | Image synthesizing method and system
+JP5230376B2 | 2008-11-28 | 2013-07-10 | 三星電子株式会社 | Imaging apparatus and imaging method
+JP5265336B2 | 2008-12-25 | 2013-08-14 | 富士フイルム株式会社 | Camera shake correction apparatus and optical apparatus
+JP2010204341A | 2009-03-03 | 2010-09-16 | Nikon Corp | Camera
+CN101833157A | 2009-03-13 | 2010-09-15 | 鸿富锦精密工业（深圳）有限公司 | Camera module
+CN105681633B | 2009-03-19 | 2019-01-18 | 数字光学公司 | Dual sensor camera and its method
+WO2010116366A1 | 2009-04-07 | 2010-10-14 | Nextvision Stabilized Systems Ltd | Video motion compensation and stabilization gimbaled imaging system
+KR101552481B1 | 2009-04-13 | 2015-09-21 | 삼성전자 주식회사 | Zoom lens module
+US8553106B2 | 2009-05-04 | 2013-10-08 | Digitaloptics Corporation | Dual lens digital zoom
+WO2010147609A1 | 2009-06-16 | 2010-12-23 | Intel Corporation | Camera applications in a handheld device
+WO2010148363A2 | 2009-06-18 | 2010-12-23 | Theia Technologies, Llc | Compact dome camera
+CN102461157B | 2009-06-22 | 2016-01-20 | 豪威科技有限公司 | The exercisable system and method for imageing sensor in many video standards
+WO2011009108A2 | 2009-07-17 | 2011-01-20 | Universal Robotics, Inc. | System and method for automatic calibration of stereo images
+US8128246B1 | 2009-07-22 | 2012-03-06 | Exelis, Inc. | Fast steering mirror
+JP5846346B2 | 2009-08-21 | 2016-01-20 | ミツミ電機株式会社 | Camera shake correction device
+CN201514511U | 2009-09-08 | 2010-06-23 | 华晶科技股份有限公司 | Periscopic lens structure
+KR101613928B1 | 2009-09-09 | 2016-04-20 | 엘지전자 주식회사 | Portable terminal
+ES2739036T3 | 2009-09-14 | 2020-01-28 | Viion Systems Inc | Saccadic Dual Resolution Video Analysis Camera
+KR101617289B1 | 2009-09-30 | 2016-05-02 | 엘지전자 주식회사 | Mobile terminal and operation control method thereof
+EP3611555A1 | 2009-11-19 | 2020-02-19 | eSight Corporation | Image magnification on a head mounted display
+EP2502115A4 | 2009-11-20 | 2013-11-06 | Pelican Imaging Corp | Capturing and processing of images using monolithic camera array with heterogeneous imagers
+US8400555B1 | 2009-12-01 | 2013-03-19 | Adobe Systems Incorporated | Focused plenoptic camera employing microlenses with different focal lengths
+US20110128288A1 | 2009-12-02 | 2011-06-02 | David Petrou | Region of Interest Selector for Visual Queries
+CA2787377A1 | 2010-01-28 | 2011-08-04 | Pathway Innovations And Technologies, Inc. | Document imaging system having camera-scanner apparatus and personal computer based processing software
+JP5445235B2 | 2010-03-09 | 2014-03-19 | ソニー株式会社 | Image processing apparatus, image processing method, and program
+JP2011205374A | 2010-03-25 | 2011-10-13 | Fujifilm Corp | Display apparatus
+TWI478828B | 2010-03-26 | 2015-04-01 | Hon Hai Prec Ind Co Ltd | Vehicle imaging system and vehicle with same
+JP4783465B1 | 2010-03-26 | 2011-09-28 | 富士フイルム株式会社 | Imaging device and display device
+US8456518B2 | 2010-03-31 | 2013-06-04 | James Cameron & Vincent Pace | Stereoscopic camera with automatic obstruction removal
+US9001227B2 | 2010-04-05 | 2015-04-07 | Qualcomm Incorporated | Combining data from multiple image sensors
+US8547389B2 | 2010-04-05 | 2013-10-01 | Microsoft Corporation | Capturing image structure detail from a first image and color from a second image
+US8446484B2 | 2010-04-21 | 2013-05-21 | Nokia Corporation | Image processing architecture with pre-scaler
+US20130250150A1 | 2010-05-03 | 2013-09-26 | Michael R. Malone | Devices and methods for high-resolution image and video capture
+EP2567287B1 | 2010-05-03 | 2019-08-21 | InVisage Technologies, Inc. | Devices and methods for high-resolution image and video capture
+DE102010017057B4 | 2010-05-21 | 2015-03-19 | Jena-Optronik Gmbh | Camera with several fixed focal lengths
+MX2013000484A | 2010-07-13 | 2013-11-04 | Ram Srikanth Mirlay | Variable three-dimensional camera assembly for still photography.
+JP2012027263A | 2010-07-23 | 2012-02-09 | Sony Corp | Imaging apparatus, control method and program thereof
+US8493482B2 | 2010-08-18 | 2013-07-23 | Apple Inc. | Dual image sensor image processing system and method
+US8896655B2 | 2010-08-31 | 2014-11-25 | Cisco Technology, Inc. | System and method for providing depth adaptive video conferencing
+JP5609467B2 | 2010-09-15 | 2014-10-22 | 株式会社リコー | Imaging apparatus and imaging method
+US8780251B2 | 2010-09-20 | 2014-07-15 | Canon Kabushiki Kaisha | Image capture with focus adjustment
+US20120075489A1 | 2010-09-24 | 2012-03-29 | Nishihara H Keith | Zoom camera image blending technique
+US20140192238A1 | 2010-10-24 | 2014-07-10 | Linx Computational Imaging Ltd. | System and Method  for Imaging and Image Processing
+US9204026B2 | 2010-11-01 | 2015-12-01 | Lg Electronics Inc. | Mobile terminal and method of controlling an image photographing therein
+JP5719148B2 | 2010-11-10 | 2015-05-13 | キヤノン株式会社 | Imaging apparatus, control method therefor, and program
+KR101731346B1 | 2010-11-12 | 2017-04-28 | 엘지전자 주식회사 | Method for providing display image in multimedia device and thereof
+WO2012075250A1 | 2010-12-01 | 2012-06-07 | Magna Electronics Inc. | System and method of establishing a multi-camera image using pixel remapping
+US8274552B2 | 2010-12-27 | 2012-09-25 | 3Dmedia Corporation | Primary and auxiliary image capture devices for image processing and related methods
+US10200671B2 | 2010-12-27 | 2019-02-05 | 3Dmedia Corporation | Primary and auxiliary image capture devices for image processing and related methods
+JP2012141442A | 2010-12-28 | 2012-07-26 | Sony Corp | Lens protection device, lens unit, and image pickup apparatus
+US8803990B2 | 2011-01-25 | 2014-08-12 | Aptina Imaging Corporation | Imaging system with multiple sensors for producing high-dynamic-range images
+US8520080B2 | 2011-01-31 | 2013-08-27 | Hand Held Products, Inc. | Apparatus, system, and method of use of imaging assembly on mobile terminal
+JP5814566B2 | 2011-02-28 | 2015-11-17 | オリンパス株式会社 | IMAGING DEVICE, IMAGING METHOD, AND IMAGING DEVICE CONTROL PROGRAM
+EP2684026A4 | 2011-03-08 | 2014-09-10 | Spectral Instr Imaging Llc | Imaging system having primary and auxiliary camera systems
+JP5708097B2 | 2011-03-18 | 2015-04-30 | 株式会社リコー | Imaging apparatus, imaging method, and imaging program
+US9172856B2 | 2011-03-29 | 2015-10-27 | Microsoft Technology Licensing, Llc | Folded imaging path camera
+US8553129B2 | 2011-05-10 | 2013-10-08 | Htc Corporation | Handheld electronic device with two lens modules, dual image capturing method applying for the handheld electronic device, and computer program product for load into the handheld electronic device
+EP2523450B1 | 2011-05-10 | 2014-05-14 | HTC Corporation | Handheld electronic device with dual image capturing method and computer program product
+KR101224790B1 | 2011-06-14 | 2013-01-21 | 삼성전기주식회사 | Image Photographing Device
+US8605199B2 | 2011-06-28 | 2013-12-10 | Canon Kabushiki Kaisha | Adjustment of imaging properties for an imaging assembly having light-field optics
+JP5821356B2 | 2011-07-15 | 2015-11-24 | ミツミ電機株式会社 | Lens drive device
+US9270875B2 | 2011-07-20 | 2016-02-23 | Broadcom Corporation | Dual image capture processing
+JP6103840B2 | 2011-07-28 | 2017-03-29 | キヤノン株式会社 | Correction optical apparatus and imaging apparatus
+US8988564B2 | 2011-09-09 | 2015-03-24 | Apple Inc. | Digital camera with light splitter
+EP2592823A3 | 2011-10-12 | 2013-06-19 | Canon Kabushiki Kaisha | Image-capturing device
+US8947627B2 | 2011-10-14 | 2015-02-03 | Apple Inc. | Electronic devices having displays with openings
+JP5884421B2 | 2011-11-14 | 2016-03-15 | ソニー株式会社 | Image processing apparatus, image processing apparatus control method, and program
+US8970655B2 | 2011-12-16 | 2015-03-03 | Polycom, Inc. | Reflective and refractive solutions to providing direct eye contact videoconferencing
+US8619148B1 | 2012-01-04 | 2013-12-31 | Audience, Inc. | Image correction after combining images from multiple cameras
+JP2013143753A | 2012-01-12 | 2013-07-22 | Olympus Corp | Imaging apparatus
+KR20130090225A | 2012-02-03 | 2013-08-13 | 삼성전자주식회사 | Method of changing an operation mode of a camera image sensor
+GB2499200B | 2012-02-07 | 2014-12-17 | Canon Kk | Method and device for transitioning between an image of a first video sequence and an image for a second video sequence
+US8866943B2 | 2012-03-09 | 2014-10-21 | Apple Inc. | Video camera providing a composite video sequence
+US20130258044A1 | 2012-03-30 | 2013-10-03 | Zetta Research And Development Llc - Forc Series | Multi-lens camera
+US9029759B2 | 2012-04-12 | 2015-05-12 | Nan Chang O-Film Optoelectronics Technology Ltd | Compact camera modules with features for reducing Z-height and facilitating lens alignment and methods for manufacturing the same
+JP2013238848A | 2012-04-20 | 2013-11-28 | Hoya Corp | Imaging apparatus
+CN102722321A | 2012-05-22 | 2012-10-10 | 中兴通讯股份有限公司 | Method and device for switching between double cameras
+US8953084B2 | 2012-05-30 | 2015-02-10 | Digimarc Corporation | Plural focal-plane imaging
+CN104350734B | 2012-06-11 | 2017-12-12 | 索尼电脑娱乐公司 | Image forming apparatus and image generating method
+KR101991719B1 | 2012-06-29 | 2019-06-21 | 엘지이노텍 주식회사 | Camera Module
+US9134503B2 | 2012-07-06 | 2015-09-15 | Apple Inc. | VCM OIS actuator module
+EP2872966A1 | 2012-07-12 | 2015-05-20 | Dual Aperture International Co. Ltd. | Gesture-based user interface
+US9225903B2 | 2012-07-12 | 2015-12-29 | Sony Corporation | Image blur correction apparatus, method of correcting image blur, and imaging apparatus
+US9398264B2 | 2012-10-19 | 2016-07-19 | Qualcomm Incorporated | Multi-camera system using folded optics
+CN104937920A | 2012-10-31 | 2015-09-23 | 因维萨热技术公司 | Expanded-field-of-view image and video capture
+TWI525802B | 2012-11-08 | 2016-03-11 | 威動光私人有限公司 | Zoom lens, optical device, method for manufacturing the same, and handheld electronic device comprising the same
+CN104106002B | 2012-11-16 | 2017-10-13 | 松下电器（美国）知识产权公司 | Camera drive device
+DE112013006172T5 | 2012-12-20 | 2015-09-17 | Apple Inc. | Voice coil optical motor image stabilization system
+US9547160B2 | 2013-01-05 | 2017-01-17 | Light Labs Inc. | Methods and apparatus for capturing and/or processing images
+US20140313316A1 | 2013-01-30 | 2014-10-23 | SeeScan, Inc. | Adjustable variable resolution inspection systems and methods using multiple image sensors
+US20140218587A1 | 2013-02-07 | 2014-08-07 | Motorola Mobility Llc | Double sided camera module
+WO2014152855A2 | 2013-03-14 | 2014-09-25 | Geerds Joergen | Camera system
+JP2014179736A | 2013-03-14 | 2014-09-25 | Toshiba Corp | Camera module
+WO2014145166A2 | 2013-03-15 | 2014-09-18 | Eyecam, LLC | Autonomous computing and telecommunications head-up displays glasses
+JP5802796B2 | 2013-05-06 | 2015-11-04 | 台湾東電化股▲ふん▼有限公司 | Electromagnetic lens driving device having a three-axis closed loop feedback control unit
+JP6214206B2 | 2013-05-13 | 2017-10-18 | キヤノン株式会社 | Imaging apparatus, control method, and program
+JP6100089B2 | 2013-05-17 | 2017-03-22 | キヤノン株式会社 | Image processing apparatus, image processing method, and program
+DE102013209829B4 | 2013-05-27 | 2016-04-28 | Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. | Optical structure with webs disposed thereon and method of making the same
+KR102166262B1 | 2013-06-10 | 2020-10-15 | 삼성전자주식회사 | Camera lens assembly
+JP6139713B2 | 2013-06-13 | 2017-05-31 | コアフォトニクス リミテッド | Dual aperture zoom digital camera
+TWI546570B | 2013-07-01 | 2016-08-21 | 台灣東電化股份有限公司 | Optical anti-shake apparatus with switchable light path
+JP6103503B2 | 2013-07-31 | 2017-03-29 | パナソニックＩｐマネジメント株式会社 | Imaging device
+EP3028443A2 | 2013-08-01 | 2016-06-08 | Corephotonics Ltd. | Thin multi-aperture imaging system with auto-focus and methods for using same
+US9285566B2 | 2013-08-08 | 2016-03-15 | Apple Inc. | Mirror tilt actuation
+US9494769B2 | 2013-09-12 | 2016-11-15 | Hong Kong Applied Science And Technology Research Institute Co. Ltd. | Multi-lens imaging module and actuator with auto-focus adjustment
+US10151859B2 | 2013-09-23 | 2018-12-11 | Lg Innotek Co., Ltd. | Camera module and manufacturing method for same
+US9615012B2 | 2013-09-30 | 2017-04-04 | Google Inc. | Using a second camera to adjust settings of first camera
+TW201515433A | 2013-10-14 | 2015-04-16 | Etron Technology Inc | Image calibration system and calibration method of a stereo camera
+US9736365B2 | 2013-10-26 | 2017-08-15 | Light Labs Inc. | Zoom related methods and apparatus
+JP6551234B2 | 2013-10-22 | 2019-07-31 | Jnc株式会社 | Liquid crystal composition and liquid crystal display device
+CN105492954B | 2013-11-06 | 2018-04-27 | 核心光电有限公司 | Electromagnetic actuators for digital camera
+US9344626B2 | 2013-11-18 | 2016-05-17 | Apple Inc. | Modeless video and still frame capture using interleaved frames of video and still resolutions
+CN104680501B | 2013-12-03 | 2018-12-07 | 华为技术有限公司 | The method and device of image mosaic
+US9215377B2 | 2013-12-04 | 2015-12-15 | Nokia Technologies Oy | Digital zoom with sensor mode change
+CN105339841B | 2013-12-06 | 2018-12-14 | 华为终端（东莞）有限公司 | The photographic method and bimirror head apparatus of bimirror head apparatus
+WO2015081563A1 | 2013-12-06 | 2015-06-11 | 华为终端有限公司 | Method for generating picture and twin-lens device
+WO2015081562A1 | 2013-12-06 | 2015-06-11 | 华为终端有限公司 | Terminal, image processing method, and image acquisition method
+KR101916355B1 | 2013-12-06 | 2018-11-07 | 후아웨이 디바이스 (둥관) 컴퍼니 리미티드 | Photographing method of dual-lens device, and dual-lens device
+US9538096B2 | 2014-01-27 | 2017-01-03 | Raytheon Company | Imaging system and methods with variable lateral magnification
+KR102128468B1 | 2014-02-19 | 2020-06-30 | 삼성전자주식회사 | Image Processing Device and Method including a plurality of image signal processors
+WO2015124966A1 | 2014-02-19 | 2015-08-27 | Corephotonics Ltd. | Magnetic shielding between voice coil motors in a dual-aperture camera
+WO2015129120A1 | 2014-02-26 | 2015-09-03 | 富士フイルム株式会社 | Method for manufacturing image-capturing module, and device for manufacturing image-capturing module
+TW201533514A | 2014-02-27 | 2015-09-01 | Tdk Taiwan Corp | Reflector structure and photographic device
+US9557627B2 | 2014-03-07 | 2017-01-31 | Apple Inc. | Folded camera lens systems
+US9316810B2 | 2014-03-07 | 2016-04-19 | Apple Inc. | Folded telephoto camera lens system
+US20150271471A1 | 2014-03-19 | 2015-09-24 | Htc Corporation | Blocking detection method for camera and electronic apparatus with cameras
+KR102214193B1 | 2014-03-25 | 2021-02-09 | 삼성전자 주식회사 | Depth camera device, 3d image display system having the same and control methods thereof
+KR101421223B1 | 2014-03-25 | 2014-07-22 | 넥스타테크놀로지 주식회사 | A camera module having the AF and the OIS function
+US9383550B2 | 2014-04-04 | 2016-07-05 | Qualcomm Incorporated | Auto-focus in low-profile folded optics multi-camera system
+CN105024516B | 2014-04-30 | 2017-12-01 | 光宝电子(广州)有限公司 | Voice coil motor array module
+JP6376618B2 | 2014-05-15 | 2018-08-22 | 華為技術有限公司Ｈｕａｗｅｉ Ｔｅｃｈｎｏｌｏｇｉｅｓ Ｃｏ．，Ｌｔｄ． | Multi-frame noise reduction method and terminal
+US20150334309A1 | 2014-05-16 | 2015-11-19 | Htc Corporation | Handheld electronic apparatus, image capturing apparatus and image capturing method thereof
+US9264591B2 | 2014-06-02 | 2016-02-16 | Apple Inc. | Comb drive and leaf spring camera actuator
+US9360671B1 | 2014-06-09 | 2016-06-07 | Google Inc. | Systems and methods for image zoom
+US9549107B2 | 2014-06-20 | 2017-01-17 | Qualcomm Incorporated | Autofocus for folded optic array cameras
+US20160044247A1 | 2014-08-10 | 2016-02-11 | Corephotonics Ltd. | Zoom dual-aperture camera with folded lens
+US9392188B2 | 2014-08-10 | 2016-07-12 | Corephotonics Ltd. | Zoom dual-aperture camera with folded lens
+JP2016057468A | 2014-09-10 | 2016-04-21 | Hoya株式会社 | Bending imaging device
+US10129455B2 | 2014-09-30 | 2018-11-13 | Huawei Technologies Co., Ltd. | Auto-focus method and apparatus and electronic device
+WO2016081567A1 | 2014-11-19 | 2016-05-26 | Orlo James Fiske | Thin optical system and camera
+KR102287013B1 | 2014-11-25 | 2021-08-06 | 삼성디스플레이 주식회사 | Thin film transistor, organic light emitting diode display including the same and manufacuring method thereof
+US10634867B2 | 2014-11-28 | 2020-04-28 | Samsung Electro-Mechanics Co., Ltd. | Camera module
+US9286680B1 | 2014-12-23 | 2016-03-15 | Futurewei Technologies, Inc. | Computational multi-camera adjustment for smooth view switching and zooming
+US11019330B2 | 2015-01-19 | 2021-05-25 | Aquifi, Inc. | Multiple camera system with auto recalibration
+US9800798B2 | 2015-02-13 | 2017-10-24 | Qualcomm Incorporated | Systems and methods for power optimization for imaging devices with dual cameras
+JP6637668B2 | 2015-03-30 | 2020-01-29 | 惠州市大亜湾永昶電子工業有限公司 | Lens drive
+US9485432B1 | 2015-04-29 | 2016-11-01 | Uurmi Systems Private Limited | Methods, systems and apparatuses for dual-camera based zooming
+US20160353012A1 | 2015-05-25 | 2016-12-01 | Htc Corporation | Zooming control method for camera and electronic apparatus with camera
+US10036895B2 | 2015-05-28 | 2018-07-31 | Corephotonics Ltd. | Bi-directional stiffness for optical image stabilization in a dual-aperture digital camera
+KR101992040B1 | 2015-06-24 | 2019-06-21 | 코어포토닉스 리미티드 | Low-Profile 3-Axis Actuator for Foldable Lens Cameras
+CN106709899B | 2015-07-15 | 2020-06-02 | 华为终端有限公司 | Method, device and equipment for calculating relative positions of two cameras
+US20170070731A1 | 2015-09-04 | 2017-03-09 | Apple Inc. | Single And Multi-Camera Calibration
+EP3335077B1 | 2015-09-06 | 2019-08-14 | Corephotonics Ltd. | Auto focus and optical image stabilization with roll compensation in a compact folded camera
+US9746689B2 | 2015-09-24 | 2017-08-29 | Intel Corporation | Magnetic fluid optical image stabilization
+KR20170075442A | 2015-12-23 | 2017-07-03 | 삼성전자주식회사 | Photographing apparatus module, user terminal comprising the photographing apparatus and method of operating the photographing apparatus module
+US9843736B2 | 2016-02-26 | 2017-12-12 | Essential Products, Inc. | Image capture with a camera integrated display
+KR20170112491A | 2016-03-31 | 2017-10-12 | 엘지전자 주식회사 | Mobile terminal and method for controlling the same
+KR102002718B1 | 2016-05-30 | 2019-10-18 | 코어포토닉스 리미티드 | Rotary Ball-Guid Voice Coil Motor
+US10303042B2 | 2016-07-12 | 2019-05-28 | Tdk Taiwan Corp. | Lens driving module
+TWM533229U | 2016-08-26 | 2016-12-01 | Largan Precision Co Ltd | Optical path folding element, imaging lens module and electronic device
+CN106603765B | 2016-12-20 | 2020-03-17 | Oppo广东移动通信有限公司 | Bracket component and mobile terminal
+CN106534655B | 2017-01-11 | 2019-04-16 | Oppo广东移动通信有限公司 | Camera module and mobile terminal
+US10534194B2 | 2017-02-17 | 2020-01-14 | Samsung Electro-Mechanics Co., Ltd. | Reflecting module for OIS and camera module including the same
+US10334149B2 | 2017-02-23 | 2019-06-25 | Qualcomm Incorporated | Adjustment for cameras for low power mode operation
+KR20180114296A | 2017-04-10 | 2018-10-18 | 삼성전자주식회사 | Method and electronic device for focus control
+JP2018179981A | 2017-04-18 | 2018-11-15 | パナソニックＩｐマネジメント株式会社 | Camera calibration method, camera calibration program and camera calibration device
+[PATENT_CITED_BY]:
+[FAMILY_CITED_BY]:
+CN113259565A | 2012-11-28 | 2021-08-13 | 核心光电有限公司 | Multi-aperture imaging system and method for acquiring images by multi-aperture imaging system
+JP6139713B2 | 2013-06-13 | 2017-05-31 | コアフォトニクス リミテッド | Dual aperture zoom digital camera
+CN108519656A | 2013-07-04 | 2018-09-11 | 核心光电有限公司 | Small-sized focal length lens external member
+EP3028443A2 | 2013-08-01 | 2016-06-08 | Corephotonics Ltd. | Thin multi-aperture imaging system with auto-focus and methods for using same
+US9392188B2 | 2014-08-10 | 2016-07-12 | Corephotonics Ltd. | Zoom dual-aperture camera with folded lens
+WO2016108093A1 | 2015-01-03 | 2016-07-07 | Corephotonics Ltd. | Miniature telephoto lens module and a camera utilizing such a lens module
+WO2016156996A1 | 2015-04-02 | 2016-10-06 | Corephotonics Ltd. | Dual voice coil motor structure in a dual-optical module camera
+KR101963546B1 | 2015-04-16 | 2019-03-28 | 코어포토닉스 리미티드 | Auto focus and optical imagestabilization in a compact folded camera
+US10036895B2 | 2015-05-28 | 2018-07-31 | Corephotonics Ltd. | Bi-directional stiffness for optical image stabilization in a dual-aperture digital camera
+KR101992040B1 | 2015-06-24 | 2019-06-21 | 코어포토닉스 리미티드 | Low-Profile 3-Axis Actuator for Foldable Lens Cameras
+CN112672022A | 2015-08-13 | 2021-04-16 | 核心光电有限公司 | Dual aperture zoom camera with video support and switching/non-switching dynamic control
+EP3335077B1 | 2015-09-06 | 2019-08-14 | Corephotonics Ltd. | Auto focus and optical image stabilization with roll compensation in a compact folded camera
+US10578948B2 | 2015-12-29 | 2020-03-03 | Corephotonics Ltd. | Dual-aperture zoom digital camera with automatic adjustable tele field of view
+US10133038B2 | 2016-05-10 | 2018-11-20 | Tdk Taiwan Corp. | Camera system
+KR102002718B1 | 2016-05-30 | 2019-10-18 | 코어포토닉스 리미티드 | Rotary Ball-Guid Voice Coil Motor
+CN109639954B | 2016-06-19 | 2020-10-23 | 核心光电有限公司 | Frame synchronization system and method in dual aperture camera
+WO2018007951A1 | 2016-07-07 | 2018-01-11 | Corephotonics Ltd. | Dual-camera system with improved video smooth transition by image blending
+CN107924064B | 2016-07-07 | 2020-06-12 | 核心光电有限公司 | Linear ball guided voice coil motor for folded optical devices
+US10303042B2 | 2016-07-12 | 2019-05-28 | Tdk Taiwan Corp. | Lens driving module
+US10516773B2 | 2016-10-13 | 2019-12-24 | Samsung Electro-Mechanics Co., Ltd. | Camera module and portable electronic device including the same
+KR20180042718A | 2016-10-18 | 2018-04-26 | 삼성전자주식회사 | The Electronic Device Shooting Image
+KR102269547B1 | 2016-12-28 | 2021-06-25 | 코어포토닉스 리미티드 | Folded camera structure with extended light-folding-element scanning range
+CN106534655B | 2017-01-11 | 2019-04-16 | Oppo广东移动通信有限公司 | Camera module and mobile terminal
+CN106791329B | 2017-01-11 | 2019-09-13 | Oppo广东移动通信有限公司 | Camera module and terminal
+EP3395056B1 | 2017-01-12 | 2021-06-09 | Corephotonics Ltd. | Compact folded camera
+KR20180085460A | 2017-01-19 | 2018-07-27 | 엘지전자 주식회사 | Camera module and camera device
+KR102046472B1 | 2017-02-15 | 2019-11-19 | 삼성전기주식회사 | Mirror Module for OIS and Camera module including the same
+CN110058372A | 2017-02-23 | 2019-07-26 | 核心光电有限公司 | Folding camera lens design
+DE102017204035B3 | 2017-03-10 | 2018-09-13 | Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. | A multi-aperture imaging apparatus, imaging system, and method of providing a multi-aperture imaging apparatus
+JP2020512581A | 2017-03-15 | 2020-04-23 | コアフォトニクス リミテッド | Camera with panoramic scanning range
+DE102017206429A1 | 2017-04-13 | 2018-10-18 | Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. | A multi-aperture imaging apparatus, imaging system, and method of providing a multi-aperture imaging apparatus
+CN108732715A | 2017-04-18 | 2018-11-02 | 台湾东电化股份有限公司 | Optical system
+JP2018205683A | 2017-05-25 | 2018-12-27 | ミツミ電機株式会社 | Camera-purpose actuator, camera module, and camera-mounted device
+WO2019022492A1 | 2017-07-25 | 2019-01-31 | Lg Electronics Inc. | Camera, and image display apparatus including the same
+US10904512B2 | 2017-09-06 | 2021-01-26 | Corephotonics Ltd. | Combined stereoscopic and phase detection depth mapping in a dual aperture camera
+DE102017216172A1 | 2017-09-13 | 2019-03-14 | Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V. | MULTI-PAPER IMAGING DEVICE WITH LOW HEIGHT AND SWITCHING VISIBILITY, PICTURE SYSTEM AND PROCESS FOR PROVIDING A MULTI-PAPER IMAGING DEVICE
+US10951834B2 | 2017-10-03 | 2021-03-16 | Corephotonics Ltd. | Synthetically enlarged camera aperture
+US10462370B2 | 2017-10-03 | 2019-10-29 | Google Llc | Video stabilization
+CN109963058B | 2017-12-14 | 2021-04-06 | Lg 电子株式会社 | Prism device and camera device including the same
+KR102145896B1 | 2017-12-14 | 2020-08-19 | 엘지전자 주식회사 | Dual prism device, and camera including the same
+EP3499286A1 | 2017-12-14 | 2019-06-19 | LG Electronics Inc. | Prism apparatus, and camera apparatus including the same
+CN110082878A | 2018-01-25 | 2019-08-02 | 台湾东电化股份有限公司 | Optical element driving mechanism
+WO2019150188A1 | 2018-02-05 | 2019-08-08 | Corephotonics Ltd. | Reduced height penalty for folded camera
+US10890752B2 | 2018-02-07 | 2021-01-12 | Sintai Optical (Shenzhen) Co., Ltd. | Optical path turning module
+US20200400926A1 | 2018-02-12 | 2020-12-24 | Corephotonics Ltd. | Folded camera with optical image stabilization
+US10694168B2 | 2018-04-22 | 2020-06-23 | Corephotonics Ltd. | System and method for mitigating or preventing eye damage from structured light IR/NIR projector systems
+US10171738B1 | 2018-05-04 | 2019-01-01 | Google Llc | Stabilizing video to reduce camera and face movement
+EP3783412A4 | 2018-06-14 | 2021-07-28 | Guangdong Oppo Mobile Telecommunications Corp Ltd | Imaging module, camera assembly and electronic device
+US11019242B2 | 2018-06-14 | 2021-05-25 | Guangdong Oppo Mobile Telecommunications Corp., Ltd. | Camera assembly and electronic device using the same, both having a decorative member mounted on a shell and comprising a decorative ring and a flange
+US11064098B2 | 2018-06-15 | 2021-07-13 | Guangdong Oppo Mobile Telecommunications Corp., Ltd. | Camera module, camera assembly and electronic device
+CN108965663B | 2018-07-09 | 2020-07-03 | Oppo广东移动通信有限公司 | Electronic device
+KR20200020138A | 2018-08-16 | 2020-02-26 | 엘지이노텍 주식회사 | Image Stabilizing Apparatus including Prism and Camera module comprising the same
+TWI672538B | 2018-09-12 | 2019-09-21 | 大陽科技股份有限公司 | Camera module and electronic device
+TWI704404B | 2019-05-15 | 2020-09-11 | 大陽科技股份有限公司 | Camera module and electronic device
+WO2020243853A1 | 2019-06-01 | 2020-12-10 | 瑞声光学解决方案私人有限公司 | Lens module of camera lens
+US20210088877A1 | 2019-09-25 | 2021-03-25 | Apple Inc. | Camera With Folded Optics
+JP2021056351A | 2019-09-30 | 2021-04-08 | セイコーエプソン株式会社 | Optical device, projector, and method for controlling optical device
+KR102187734B1 | 2019-11-12 | 2020-12-07 | 삼성전기주식회사 | Mirror Module for OIS and Camera module including the same
+KR102255178B1 | 2019-11-20 | 2021-05-24 | 주식회사 엠씨넥스 | Prism driven dual camera apparatus
+KR20210067420A | 2019-11-29 | 2021-06-08 | 엘지이노텍 주식회사 | Camera actuator and camera module comprising the same
+WO2021111301A2 | 2019-12-03 | 2021-06-10 | Corephotonics Ltd. | Actuators for providing an extended two-degree of freedom rotation range
+JP2021107891A | 2019-12-27 | 2021-07-29 | エーエーシー オプティックス ソリューションズ ピーティーイー リミテッド | Imaging device with image stabilization function
+US20210239932A1 | 2020-02-04 | 2021-08-05 | Hand Held Products, Inc. | Discrete variable focus assemblies and apparatuses
+KR102241321B1 | 2020-11-30 | 2021-04-16 | 삼성전기주식회사 | Mirror Module for OIS and Camera module including the same
+[DOCUMENTS]:
+US11131836B2 | 2021-09-28 | Auto focus and optical image stabilization in a compact folded camera
+US10070060B2 | 2018-09-04 | Auto focus and optical image stabilization with roll compensation in a compact folded camera
+EP3822588A1 | 2021-05-19 | An optical-path folding-element with an extended two degree of freedom rotation range
