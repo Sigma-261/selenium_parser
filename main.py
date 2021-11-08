@@ -366,10 +366,10 @@ def main():
     print("-------------------------------+")
     print("| ВЫБЕРИТЕ ФУНКЦИЮ             |")
     print("+------------------------------+")
-    print("| 1) УЗНАТЬ КОЛИЧЕСТВО ПАТЕНТОВ|\n" +
-          "| 2) ПАРСИНГ ПАТЕНТОВ          |\n" +
-          "| 3) СБОР ИНФОРМАЦИИ О ПАТЕНТЕ |\n" +
-          "| 4) НОВЫЙ ПАТЕНТНЫЙ ПАРСЕР    |\n" +
+    print("| 1) ПАРСИНГ ПАТЕНТОВ          |\n" +
+          "| 2) ...                       |\n" +
+          "| 3) ...                       |\n" +
+          "| 4) ...                       |\n" +
           "| 5) ...                       |")
     print("+------------------------------+\n")
 
@@ -389,67 +389,6 @@ def main():
           + "&status=" + status \
           + "&language=" + lang \
           + "&type=" + type_
-    '''cpc = "H04N5"
-    priority = "low"
-    inventors = ""
-    assignee = ""
-    country = "US"
-    date_after = "20150101"
-    date_before = "20200909"
-    type_date = "priority"
-    status = "GRANT"
-    lang = "ENGLISH"
-    type_ = "PATENT"
-    litigation = "l"
-    url = "https://patents.google.com/?" + cpc \
-          + "%2f" + priority \
-          + "&country=" + country \
-          + "&before=priority:" + date_before \
-          + "&after=priority:" + date_after \
-          + "&status=" + status \
-          + "&language=" + lang \
-          + "&type=" + type_
-
-    if(cpc):
-        url = url +"q="+cpc
-    else:
-        pass
-    if()'''
-
-    patents = "patents"
-    html_patents = "html_patents"
-    info_patents = "info_patents"
-
-    path_patents = patents + "\\" + cpc
-    path_html_patents = patents + "\\" + cpc + "\\" + html_patents
-    path_info_patents = patents + "\\" + cpc + "\\" + info_patents
-    path_html = "C:\\PythonProjects\\selenium_parser\\" + patents + "\\" + cpc + "\\" + html_patents
-    path_info = "C:\\PythonProjects\\selenium_parser\\" + patents + "\\" + cpc + "\\" + info_patents
-
-    if not os.path.isdir(patents):
-        os.mkdir(patents)
-        print("папка " + patents + " создана")
-    else:
-        print("[папка " + patents + " уже создана]")
-
-    if not os.path.isdir(path_patents):
-        os.makedirs(path_patents)
-        print("папка " + cpc + " создана")
-    else:
-        print("[папка " + cpc + " уже создана]")
-
-    if not os.path.isdir(path_html_patents):
-        os.makedirs(path_html_patents)
-        print("папка " + html_patents + " создана")
-    else:
-        print("[папка " + html_patents + " уже создана]")
-
-    if not os.path.isdir(path_info_patents):
-        os.makedirs(path_info_patents)
-        print("папка " + info_patents + " создана")
-    else:
-        print("[папка " + info_patents + " уже создана]")
-
     try:
         connection = pymysql.connect(
             host="localhost",
