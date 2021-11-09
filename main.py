@@ -1,4 +1,6 @@
 from selenium import webdriver
+from selenium.webdriver.chrome import options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 import requests
@@ -20,95 +22,30 @@ from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 
-def get_patent_id(path, patents, cpc, source_pages, links, i):
-    with open(path) as file:
-        src = file.read()
-    soup = BeautifulSoup(src, "lxml")
-    items_divs = soup.find_all("search-result-item", class_ = "style-scope search-results")
 
-    urls =[]
-    for item in items_divs:
-        item_url = item.find("state-modifier", class_="result-title style-scope search-result-item").get("data-result")
-        item_url1 = "https://patents.google.com/" + item_url
-        urls.append(item_url1)
-    path_txt = "C:\\PythonProjects\\selenium_parser\\" + patents + "\\" + cpc + "\\" + links + "\\" + "link_" + str(i) + ".txt"
-    with open(path_txt, "w") as file:
-        for url in urls:
-            file.write(url+"\n")
-
-def get_patents_html(url, page, patents, cpc, source_pages, links):
-
-    i = 0
-    while i < page:
-        driver = webdriver.Chrome(executable_path="C:\\PythonProjects\\selenium_parser\\googledriver\\chromedriver.exe")
-        driver.maximize_window()
-        try:
-            driver.get(url=url + str(i))
-            time.sleep(10)
-            path = "C:\\PythonProjects\\selenium_parser\\" + patents + "\\" + cpc +"\\" + source_pages + "\\source_page_" + str(i) + ".html"
-            with open(path, "w", encoding='utf-8') as file:
-                file.write(driver.page_source)
-            get_patent_id(path, patents, cpc, source_pages, links, i)
-            i += 1
-        except Exception as _ex:
-            print(_ex)
-        finally:
-            driver.close()
-            driver.quit()
-
-def class_loader(cpc, links, patents):
-    i = 0
-    j = 0
-    while i < 20:
-        driver = webdriver.Chrome(executable_path="C:\\PythonProjects\\selenium_parser\\googledriver\\chromedriver.exe")
-        driver.maximize_window()
-        try:
-            path = "C:\\PythonProjects\\selenium_parser\\" + patents + "\\" + cpc + "\\" + links + "\\link_" + str(i) + ".txt"
-            file1 = open(path, "r")
-            lines = file1.readlines()
-            for line in lines:
-                driver.get(url=line)
-                time.sleep(10)
-                full_list = driver.find_element_by_xpath("//div[@class='more style-scope classification-viewer']")
-                full_list.click()
-                time.sleep(5)
-                path1 = "C:\\PythonProjects\\selenium_parser\\" + patents + "\\" + cpc + "\\" + patents + "\\patent_" + str(j) + ".html"
-                with open(path1, "w", encoding='utf-8') as file:
-                    file.write(driver.page_source)
-                j+=1
-            i+=1
-        except Exception as _ex:
-            print(_ex)
-        finally:
-            driver.close()
-            driver.quit()
-
-def get_public_as(id_patent, path_pub_as):
-    driver = webdriver.Chrome(executable_path="C:\\PythonProjects\\selenium_parser\\googledriver\\chromedriver.exe")
+def get_public_as(id_patent):
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.maximize_window()
-
+    full_publication=[]
     try:
         url = "https://worldwide.espacenet.com/patent/search/family/057994253/publication/" + id_patent + "?q=" + id_patent
         driver.get(url=url)
-        time.sleep(20)
-        with open(path_pub_as, "w", encoding='utf-8') as file:
-            file.write(driver.page_source)
+        wait = WebDriverWait(driver, 20)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id=\"biblio-also-published-as-content\"]/div[1]/a/span[1]")))
+        i = 1
+        while True:
+            try:
+                public_num = driver.find_element_by_xpath("//*[@id=\"biblio-also-published-as-content\"]/div[" + str(i) + "]/a/span[1]").text
+            except:
+                break
+            i += 1
+            full_publication.append(public_num)
+        return full_publication
     except Exception as _ex:
         print(_ex)
     finally:
         driver.close()
         driver.quit()
-
-    with open(path_pub_as, encoding='utf-8') as file:
-        src = file.read()
-    soup = BeautifulSoup(src, "lxml")
-    divs=soup.find_all("div", class_="biblio__info-block--1AuMIzL_")
-    spans = divs[6].find("span", id="biblio-also-published-as-content").find_all("a", class_="link--1bxNBund publication-number--AQHrdFQI with-focus--3Oly3pBv")
-    other_id_patent_list=[]
-    for span in spans:
-        other_id_patent = span.find("span").text.strip()
-        other_id_patent_list.append(other_id_patent)
-    return other_id_patent_list
 
 def parser_loader_new(url,connection):
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -117,64 +54,83 @@ def parser_loader_new(url,connection):
         driver.get(url=url)
         wait = WebDriverWait(driver, 10)
         wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="htmlContent"]')))
-        full_list = driver.find_element_by_xpath("//span[@class='style-scope raw-html']")
-        full_list.click()
+        first_patent = driver.find_element_by_xpath("//span[@class='style-scope raw-html']")
+        first_patent.click()
 
         wait.until(EC.element_to_be_clickable((By.XPATH, '//div[@class=\'more style-scope classification-viewer\']')))
-        full_list1 = driver.find_element_by_xpath("//div[@class='more style-scope classification-viewer']")
-        full_list1.click()
+        full_list = driver.find_element_by_xpath("//div[@class='more style-scope classification-viewer']")
+        full_list.click()
 
-        name_patent = driver.find_element_by_xpath('/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/h1')
-        print("[NAME]:" +"\n"+ name_patent.text)
+        status_patent = driver.find_element_by_xpath('//*[@id="wrapper"]/div[1]/div[2]/section/application-timeline/div/div[9]/div[3]/span').text
+        if(status_patent != "Active"):
+            return
 
-        id_patent = driver.find_element_by_xpath('/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[2]/section/header/h2')
-        print("[ID]:" +"\n"+ id_patent.text)
+        name_patent = driver.find_element_by_xpath('/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/h1').text
+        '''with connection.cursor() as cursor:
+            insert_query = "SELECT Title FROM `patents` WHERE Title = \'" + name_patent + "\'"
+            cursor.execute(insert_query)
+            nnn = cursor.fetchone()
+        if(nnn):
+            return'''
+        print("[NAME]:" +"\n"+ name_patent)
+
+
+        id_patent = driver.find_element_by_xpath('/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[2]/section/header/h2').text
+        print("[ID]:" +"\n"+ id_patent)
 
         link_patent = driver.find_element_by_xpath("/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[2]/section/header/div/state-modifier[2]/a").get_attribute("href")
         print("[LINK]:" +"\n"+ link_patent)
 
-        status_patent = driver.find_element_by_xpath('//*[@id="wrapper"]/div[1]/div[2]/section/application-timeline/div/div[9]/div[3]/span')
-        print("[STATUS]:" +"\n"+ status_patent.text)
+        print("[STATUS]:" + "\n" + status_patent)
 
-        abstract_patent = driver.find_element_by_xpath('//*[@id="text"]/abstract')
-        print("[ABSTRACT]:" +"\n"+ abstract_patent.text)
+        abstract_patent = driver.find_element_by_xpath('//*[@id="text"]/abstract').text
+        print("[ABSTRACT]:" +"\n"+ abstract_patent)
 
-        print("[INVENTORS]:" + "\n")
+        inventors_list=[]
         i=1
         while True:
             try:
-                inventors_patent = driver.find_element_by_xpath('//*[@id="wrapper"]/div[1]/div[2]/section/dl[1]/dd['+str(i)+']/state-modifier')
-                print(inventors_patent.text)
+                inventor_patent = driver.find_element_by_xpath('//*[@id="wrapper"]/div[1]/div[2]/section/dl[1]/dd['+str(i)+']/state-modifier').text
+                inventors_list.append(inventor_patent)
                 i += 1
             except:
                 break
+        print("[INVENTORS]:")
+        for pat in range(len(inventors_list)):
+            print(inventors_list[pat])
 
-        assignee_patent = driver.find_element_by_xpath('//*[@id="wrapper"]/div[1]/div[2]/section/dl[1]/dd['+str(i)+']')
-        with connection.cursor() as cursor:
-            '''insert_query = "INSERT INTO `assignees` (Name) VALUES (" +"\'" + assignee_patent.text +"\'" + ");"
-            cursor.execute(insert_query)
-            connection.commit()'''
-            insert_query = "SELECT Name FROM `assignees`"
-            cursor.execute(insert_query)
-            results = cursor.fetchall()
-            for row in results:
-                if row["Name"] == 'Toronto-Dominion Bank':
-                    print('naiden')
-            connection.commit()
+        assignee_patent = driver.find_element_by_xpath('//*[@id="wrapper"]/div[1]/div[2]/section/dl[1]/dd['+str(i)+']').text
+        print("[ASSIGNEE]:" + "\n" + assignee_patent)
 
-        print("[ASSIGNEE]:" +"\n"+ assignee_patent.text)
 
-        print("[CLASSES]:" + "\n")
+        public_list = get_public_as(id_patent=id_patent)
+        print("[PUBLIC AS]:")
+        for pat in range(len(public_list)):
+            print(public_list[pat])
+
+        classes_list=[]
+        full_class = []
+        first_class = driver.find_elements_by_xpath("/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[1]/section[3]/classification-viewer/div/classification-tree/div/div/div/div[*]/concept-mention/span/state-modifier")
+        first_description = driver.find_elements_by_xpath("/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[1]/section[3]/classification-viewer/div/classification-tree/div/div/div/div[*]/concept-mention/span/span")
+        full_class.append(first_class[-1].text)
+        full_class.append(first_description[-1].text)
+        classes_list.append(full_class)
         i=0
         classes_patent = driver.find_elements_by_xpath("/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[1]/section[3]/classification-viewer/div/div/classification-tree[*]/div/div/div/div[*]/concept-mention/span/state-modifier/a")
-        for c in classes_patent:
-            if(c.text==""):
+        for class_ in classes_patent:
+            full_class = []
+            if(class_.text==""):
                 pass
             else:
-                print(c.text)
+                full_class.append(class_.text)
                 i+=1
-                f = driver.find_elements_by_xpath("/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[1]/section[3]/classification-viewer/div/div/classification-tree[" + str(i) + "]/div/div/div/div[*]/concept-mention/span/span")
-                print(f[-1].text)
+                description = driver.find_elements_by_xpath("/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[1]/section[3]/classification-viewer/div/div/classification-tree[" + str(i) + "]/div/div/div/div[*]/concept-mention/span/span")
+                full_class.append(description[-1].text)
+                classes_list.append(full_class)
+
+        print("[CLASSES]: ")
+        for pat in range(len(classes_list)):
+            print(classes_list[pat][0] + " - " + classes_list[pat][1])
 
         description_patent = driver.find_element_by_xpath('//*[@id="description"]').text
         print("[DESCRIPTION]:" + "\n" +description_patent)
@@ -191,7 +147,7 @@ def parser_loader_new(url,connection):
         check = True
         while i <= int(pc_count)+1:
             full_info = []
-            item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[1]").text
+            item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[1]").text.replace(" *","")
             item2 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[2]").text
             item3 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[3]").text
             item4 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[4]").text
@@ -240,7 +196,7 @@ def parser_loader_new(url,connection):
         check = True
         while i <= int(cb_count)+1:
             full_info=[]
-            item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[1]").text
+            item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[1]").text.replace(" *","")
             item2 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[2]").text
             item3 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[3]").text
             item4 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[4]").text
@@ -281,7 +237,7 @@ def parser_loader_new(url,connection):
         while True:
             full_info = []
             try:
-                item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[" + str(n+2) + "]/div/div[2]/div[" + str(i) + "]/span[1]").text
+                item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[" + str(n+2) + "]/div/div[2]/div[" + str(i) + "]/span[1]").text.replace(" *","")
                 item2 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[" + str(n+2) + "]/div/div[2]/div[" + str(i) + "]/span[2]").text
                 item3 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[" + str(n+2) + "]/div/div[2]/div[" + str(i) + "]/span[3]").text
                 full_info.append(item1)
@@ -299,9 +255,9 @@ def parser_loader_new(url,connection):
         'link_patent': link_patent,
         'status': status_patent,
         'abstract': abstract_patent,
-        'inventors': inventors_patent,
+        'inventors': inventors_list,
         'assignee': assignee_patent,
-        'public_as': public_as,
+        'public_as': public_list,
         'classes': classes_list,
         'claims': claims_patent,
         'description': description_patent,
@@ -310,49 +266,25 @@ def parser_loader_new(url,connection):
         'cited_by_patent': patent_cited_by,
         'cited_by_family': family_cited_by,
         'documents': simular_document}
-
-
-
+        return patent
     except Exception as _ex:
         print(_ex)
     finally:
         driver.close()
         driver.quit()
 
-
-def parser_loader(count, url, path):
-    driver = webdriver.Chrome(executable_path="C:\\PythonProjects\\selenium_parser\\googledriver\\chromedriver.exe")
-    driver.maximize_window()
-    i = 0
-    try:
-        driver.get(url=url)
-        time.sleep(10)
-        full_list = driver.find_element_by_xpath("//span[@class='style-scope raw-html']")
-        full_list.click()
-        time.sleep(5)
-        while i < int(count):
-            path_record = path + "\\patents_num_"+str(i)+".html"
-            with open(path_record, "w", encoding='utf-8') as file:
-                file.write(driver.page_source)
-            full_list1 = driver.find_element_by_xpath("//iron-icon[@icon='chevron-right']")
-            full_list1.click()
-            i+=1
-            time.sleep(10)
-    except Exception as _ex:
-        print(_ex)
-    finally:
-        driver.close()
-        driver.quit()
 def get_count_patents(url):
-    driver = webdriver.Chrome(executable_path="C:\\PythonProjects\\selenium_parser\\googledriver\\chromedriver.exe")
+    options = Options()
+    options.headless = True
+    driver = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
     driver.maximize_window()
-
     try:
         driver.get(url=url)
-        time.sleep(5)
+        wait = WebDriverWait(driver, 10)
+        wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="count"]/div[1]/span[1]/span[3]')))
 
-        full_list = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[1]/span[3]')
-        return full_list.text
+        full_list = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[1]/span[3]').text
+        return full_list.replace(",","")
 
     except Exception as _ex:
         print(_ex)
@@ -360,6 +292,112 @@ def get_count_patents(url):
         driver.close()
         driver.quit()
 
+def insert_assignee(assignee, connection):
+    with connection.cursor() as cursor:
+        assignee = assignee.replace("\'","\"").replace("`", "\"")
+        print(assignee)
+        insert_query = "SELECT Name FROM `assignees` WHERE Name = \'" + assignee + "\'"
+        cursor.execute(insert_query)
+        nnn = cursor.fetchone()
+        if (nnn):
+            print("УЖЕ ЕСТЬ")
+        else:
+            print("ВСТАВИТЬ")
+            insert1_query = "INSERT INTO `assignees` (Name) VALUES (" + "\'" + assignee + "\'" + ");"
+            cursor.execute(insert1_query)
+            connection.commit()
+
+def insert_publication_num(num, connection):
+    with connection.cursor() as cursor:
+        print(num)
+        insert_query = "SELECT Name FROM `publication_num` WHERE Name = \'" + num + "\'"
+        cursor.execute(insert_query)
+        nnn = cursor.fetchone()
+        if (nnn):
+            print("УЖЕ ЕСТЬ")
+        else:
+            print("ВСТАВИТЬ")
+            insert1_query = "INSERT INTO `publication_num` (Name) VALUES (" + "\'" + num + "\'" + ")"
+            cursor.execute(insert1_query)
+            connection.commit()
+
+def insert_patent(id,title,link,status,assignee,abstract,claims,description, connection):
+    with connection.cursor() as cursor:
+        assignee = assignee.replace("\'","\"").replace("`", "\"")
+        claims = claims.replace("\'","\"").replace("`", "\"")
+        description = description.replace("\'", "\"").replace("`", "\"")
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_assignee_patent = "SELECT Id FROM `assignees` WHERE Name = \'" + assignee + "\'" + ";"
+        cursor.execute(select_assignee_patent)
+        assignee_patent = cursor.fetchone()
+
+        search_id_patent = "SELECT Public_numId FROM `patents` WHERE Public_numId = " + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if id_patent:
+            print("УЖЕ ЕСТЬ")
+        else:
+
+            insert1_query = "INSERT INTO `patents` (Public_numId,Title,Link,Status,AssigneeId,Abstract,Claims,Description) VALUES (" + str(public_num['Id']) + "," + "\'" + title + "\'" + "," + "\'" + link + "\'" + "," + "\'" + status + "\'" + "," + str(assignee_patent['Id']) + "," + "\'" + abstract + "\'" + "," + "\'" + claims + "\'" + "," + "\'" + description + "\'" + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+
+def insert_inventors(inventor, connection):
+    #Добавить replace
+    with connection.cursor() as cursor:
+        print(inventor)
+        insert_query = "SELECT Name FROM `inventors` WHERE Name = \'" + inventor + "\'"
+        cursor.execute(insert_query)
+        nnn = cursor.fetchone()
+        if (nnn):
+            print("УЖЕ ЕСТЬ")
+        else:
+            print("ВСТАВИТЬ")
+            insert1_query = "INSERT INTO `inventors` (Name) VALUES (" + "\'" + inventor + "\'" + ")"
+            cursor.execute(insert1_query)
+            connection.commit()
+
+def insert_classes(class_name,class_descriprion, connection):
+    # Добавить replace описания
+    with connection.cursor() as cursor:
+        print(class_name + " - " + class_descriprion)
+        insert_query = "SELECT Name FROM `classes` WHERE Name = \'" + class_name + "\'"
+        cursor.execute(insert_query)
+        nnn = cursor.fetchone()
+        if (nnn):
+            print("УЖЕ ЕСТЬ")
+        else:
+            print("ВСТАВИТЬ")
+            insert1_query = "INSERT INTO `classes` (Name, Description) VALUES (" + "\'" + class_name + "\'" + "," + "\'" + class_descriprion + "\'" + ")"
+            cursor.execute(insert1_query)
+            connection.commit()
+
+def insert_patent_citations(connection):
+    pass
+def insert_family_citations(connection):
+    pass
+def insert_patent_cited_by(connection):
+    pass
+def insert_family_cited_by(connection):
+    pass
+def insert_documents(connection):
+    pass
+def insert_patents_inventors(connection):
+    pass
+def insert_patents_classes(connection):
+    pass
+def insert_patents_pc(connection):
+    pass
+def insert_patents_cited_by(connection):
+    pass
+def insert_patents_documents(connection):
+    pass
+def insert_public_as(connection):
+    pass
 
 def main():
 
@@ -367,12 +405,12 @@ def main():
     print("| ВЫБЕРИТЕ ФУНКЦИЮ             |")
     print("+------------------------------+")
     print("| 1) ПАРСИНГ ПАТЕНТОВ          |\n" +
-          "| 2) ...                       |\n" +
+          "| 2) ЗАПИСЬ В БД               |\n" +
           "| 3) ...                       |\n" +
           "| 4) ...                       |\n" +
           "| 5) ...                       |")
     print("+------------------------------+\n")
-
+    #print("o`nil".replace("`","\""))
     cpc = "H04N5"
     priority = "low"
     country = "US"
@@ -389,6 +427,7 @@ def main():
           + "&status=" + status \
           + "&language=" + lang \
           + "&type=" + type_
+
     try:
         connection = pymysql.connect(
             host="localhost",
@@ -398,9 +437,9 @@ def main():
             database="Patents",
             cursorclass=pymysql.cursors.DictCursor
         )
-        print("connection")
+        print("[подключение к базе данных]")
     except Exception as ex:
-        print("not connection")
+        print("[подключение к базе данных не удалось]")
         print(ex)
 
     while True:
@@ -409,64 +448,49 @@ def main():
 
         print("ВЫБРАНА ФУНКЦИЯ: ", end='')
         if num == "1":
-            print("УЗНАТЬ КОЛИЧЕСТВО ПАТЕНТОВ")
-            count_patent=get_count_patents(url=url)
-            count_patent = str(count_patent).replace(",", "")
-            print("КОЛИЧЕСТВО ПАТЕНТОВ: " + str(count_patent))
-        elif num == "2":
             print("ПАРСИНГ ПАТЕНТОВ")
-            while True:
-                print("ВВЕДИТЕ КОЛИЧЕСТВО ПАТЕНТОВ: ", end='')
-                count = input()
-                if(int(count) > int(count_patent)):
-                    print("НЕВЕРНОЕ УСЛОВИЕ")
-                else:
-                    break
-            print("КОЛИЧЕСТВО ПАТЕНТОВ: " + count)
-            parser_loader(count = count, url = url, path = path_html)
+            print("КОЛИЧЕСТВО ПАТЕНТОВ КЛАССА " + cpc + "/" + priority + ": ", end='')
+            print(get_count_patents(url=url))
 
-        elif num == "3":
-            i=0
-            print("ЗАПИСЬ ИНФОРМАЦИИ В БД")
-            print("ВВЕДИТЕ КОЛИЧЕСТВО ПАТЕНТОВ: ", end='')
-            count = input()
-            patent = {}
-            while i < int(count):
-                path_read = path_html + "\\patents_num_"+str(i)+".html"
-                path_desc = path_patents + "\\temp_desc.txt"
-                path_pub_as = path_patents + "\\temp_public_as.html"
-                path_write = path_info + "\\info_num_"+str(i)+".txt"
-                patent = get_info_patent(path_read=path_read,path_desc = path_desc, path_write = path_write, path_pub_as = path_pub_as)
-                #print(patent["inventors"][0])
-                i+=1
-        elif num == "4":
-            print("НОВЫЙ ПАРСИНГ ПАТЕНТОВ")
-            parser_loader_new(url = url,connection=connection)
+            patent = parser_loader_new(url = url,connection=connection)
+        elif num == "2":
+            print("ЗАПИСЬ В БД")
+            for pat in range(len(patent['patent_citations'])):
+                insert_assignee(assignee = patent['patent_citations'][pat][3], connection = connection)
+            for pat in range(len(patent['family_citations'])):
+                print(patent['family_citations'][pat][3])
+                insert_assignee(assignee = patent['family_citations'][pat][3], connection = connection)
+            for pat in range(len(patent['cited_by_patent'])):
+                print(patent['cited_by_patent'][pat][3])
+                insert_assignee(assignee = patent['cited_by_patent'][pat][3], connection = connection)
+            for pat in range(len(patent['cited_by_family'])):
+                print(patent['cited_by_family'][pat][3])
+                insert_assignee(assignee = patent['cited_by_family'][pat][3], connection = connection)
+            insert_assignee(assignee=patent['assignee'], connection=connection)
+
+            for pat in range(len(patent['patent_citations'])):
+                insert_publication_num(num = patent['patent_citations'][pat][0], connection = connection)
+            for pat in range(len(patent['family_citations'])):
+                insert_publication_num(num = patent['family_citations'][pat][0], connection = connection)
+            for pat in range(len(patent['cited_by_patent'])):
+                insert_publication_num(num = patent['cited_by_patent'][pat][0], connection = connection)
+            for pat in range(len(patent['cited_by_family'])):
+                insert_publication_num(num = patent['cited_by_family'][pat][0], connection = connection)
+            for pat in range(len(patent['documents'])):
+                insert_publication_num(num = patent['documents'][pat][0], connection = connection)
+            for pat in range(len(patent['public_as'])):
+                insert_publication_num(num = patent['public_as'][pat], connection = connection)
+            insert_publication_num(num=patent['id'], connection=connection)
+
+            insert_patent(id=patent['id'],title=patent['name'],link=patent['link_patent'],status=patent['status'],assignee=patent['assignee'],abstract=patent['abstract'],claims=patent['claims'],description=patent['description'], connection=connection)
+
+            for pat in range(len(patent['inventors'])):
+                insert_inventors(inventor = patent['inventors'][pat], connection = connection)
+
+            for pat in range(len(patent['classes'])):
+                insert_classes(class_name = patent['classes'][pat][0],class_descriprion = patent['classes'][pat][1], connection = connection)
         else:
             print("НЕИЗВЕСТНО")
-    '''try:
-        connection = pymysql.connect(
-            host="localhost",
-            port = 3306,
-            user="monty",
-            password="some_pass",
-            database="Patents",
-            cursorclass=pymysql.cursors.DictCursor
-        )
-        print("connection")
-    except Exception as ex:
-        print("not connection")
-        print(ex)
-    try:
-        with connection.cursor() as cursor:
-            insert_query = "INSERT INTO `patents` (title, id_patent, status, abstract, link, description, public_as, claims) VALUES ('hh','hh','hh','hh','hh','hh','hh','hh');"
-            cursor.execute(insert_query)
-            connection.commit()'''
-    '''finally:
-        connection.close()'''
 
-    '''listA = [3,45,23,7]
-    d = {'dict': listA, 'dictionary': 2}
-    print(d)'''
 if __name__ == "__main__":
     main()
