@@ -376,28 +376,300 @@ def insert_classes(class_name,class_descriprion, connection):
             cursor.execute(insert1_query)
             connection.commit()
 
-def insert_patent_citations(connection):
-    pass
-def insert_family_citations(connection):
-    pass
-def insert_patent_cited_by(connection):
-    pass
-def insert_family_cited_by(connection):
-    pass
-def insert_documents(connection):
-    pass
-def insert_patents_inventors(connection):
-    pass
-def insert_patents_classes(connection):
-    pass
-def insert_patents_pc(connection):
-    pass
-def insert_patents_cited_by(connection):
-    pass
-def insert_patents_documents(connection):
-    pass
-def insert_public_as(connection):
-    pass
+def insert_patent_citations(pc_num,pc_pri_d,pc_pub_d,pc_ass_d,pc_title, connection):
+    with connection.cursor() as cursor:
+        assignee = pc_ass_d.replace("\'","\"").replace("`", "\"")
+        title = pc_title.replace("\'","\"").replace("`", "\"")
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + pc_num + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_assignee_patent = "SELECT Id FROM `assignees` WHERE Name = \'" + assignee + "\'" + ";"
+        cursor.execute(select_assignee_patent)
+        assignee_patent = cursor.fetchone()
+
+        search_id_patent = "SELECT Public_numId FROM `patent_citations` WHERE Public_numId = " + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if id_patent:
+            print("УЖЕ ЕСТЬ")
+        else:
+            insert1_query = "INSERT INTO `patent_citations` (Public_numId,Priority_date,Publication_date,AssigneeId,Title) VALUES (" + str(public_num['Id']) + "," + "\'" + pc_pri_d + "\'" + "," + "\'" + pc_pub_d + "\'" + "," + str(assignee_patent['Id']) + "," + "\'" + title + "\'"  + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_family_citations(fc_num,fc_pri_d,fc_pub_d,fc_ass_d,fc_title, connection):
+    with connection.cursor() as cursor:
+        assignee = fc_ass_d.replace("\'","\"").replace("`", "\"")
+        title = fc_title.replace("\'","\"").replace("`", "\"")
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + fc_num + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_assignee_patent = "SELECT Id FROM `assignees` WHERE Name = \'" + assignee + "\'" + ";"
+        cursor.execute(select_assignee_patent)
+        assignee_patent = cursor.fetchone()
+
+        search_id_patent = "SELECT Public_numId FROM `family_citations` WHERE Public_numId = " + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if id_patent:
+            print("УЖЕ ЕСТЬ")
+        else:
+            insert1_query = "INSERT INTO `family_citations` (Public_numId,Priority_date,Publication_date,AssigneeId,Title) VALUES (" + str(public_num['Id']) + "," + "\'" + fc_pri_d + "\'" + "," + "\'" + fc_pub_d + "\'" + "," + str(assignee_patent['Id']) + "," + "\'" + title + "\'"  + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patent_cited_by(pcb_num,pcb_pri_d,pcb_pub_d,pcb_ass_d,pcb_title, connection):
+    with connection.cursor() as cursor:
+        assignee = pcb_ass_d.replace("\'","\"").replace("`", "\"")
+        title = pcb_title.replace("\'","\"").replace("`", "\"")
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + pcb_num + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_assignee_patent = "SELECT Id FROM `assignees` WHERE Name = \'" + assignee + "\'" + ";"
+        cursor.execute(select_assignee_patent)
+        assignee_patent = cursor.fetchone()
+
+        search_id_patent = "SELECT Public_numId FROM `patent_cited_by` WHERE Public_numId = " + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if id_patent:
+            print("УЖЕ ЕСТЬ")
+        else:
+            insert1_query = "INSERT INTO `patent_cited_by` (Public_numId,Priority_date,Publication_date,AssigneeId,Title) VALUES (" + str(public_num['Id']) + "," + "\'" + pcb_pri_d + "\'" + "," + "\'" + pcb_pub_d + "\'" + "," + str(assignee_patent['Id']) + "," + "\'" + title + "\'"  + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_family_cited_by(fcb_num,fcb_pri_d,fcb_pub_d,fcb_ass_d,fcb_title, connection):
+    with connection.cursor() as cursor:
+        assignee = fcb_ass_d.replace("\'","\"").replace("`", "\"")
+        title = fcb_title.replace("\'","\"").replace("`", "\"")
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + fcb_num + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_assignee_patent = "SELECT Id FROM `assignees` WHERE Name = \'" + assignee + "\'" + ";"
+        cursor.execute(select_assignee_patent)
+        assignee_patent = cursor.fetchone()
+
+        search_id_patent = "SELECT Public_numId FROM `family_cited_by` WHERE Public_numId = " + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if id_patent:
+            print("УЖЕ ЕСТЬ")
+        else:
+            insert1_query = "INSERT INTO `family_cited_by` (Public_numId,Priority_date,Publication_date,AssigneeId,Title) VALUES (" + str(public_num['Id']) + "," + "\'" + fcb_pri_d + "\'" + "," + "\'" + fcb_pub_d + "\'" + "," + str(assignee_patent['Id']) + "," + "\'" + title + "\'"  + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_documents(doc_num,pub_d,title,connection):
+    with connection.cursor() as cursor:
+        title = title.replace("\'","\"").replace("`", "\"")
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + doc_num + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        search_id_patent = "SELECT Public_numId FROM `documents` WHERE Public_numId = " + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if id_patent:
+            print("УЖЕ ЕСТЬ")
+        else:
+            insert1_query = "INSERT INTO `documents` (Public_numId,Publication_date,Title) VALUES (" + str(public_num['Id']) + "," + "\'" + pub_d + "\'"  + "," + "\'" + title + "\'"  + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patents_inventors(patent_id, inventor,connection):
+    inventor = inventor.replace("\'", "\"").replace("`", "\"")
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `inventors` WHERE Name = \'" + inventor + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        search_id_patent = "SELECT InventorsId, PatentsId FROM `patents_of_inventors` WHERE InventorsId = " + str(public_num1['Id']) + " AND " + "PatentsId =" +str(public_num['Id'])+ ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `patents_of_inventors` (InventorsId,PatentsId) VALUES (" + str(public_num1['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patents_classes(patent_id, class_,connection):
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `classes` WHERE Name = \'" + class_ + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        search_id_patent = "SELECT ClassesId, PatentsId FROM `patents_of_classes` WHERE ClassesId = " + str(public_num1['Id']) + " AND " + "PatentsId =" +str(public_num['Id'])+ ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `patents_of_classes` (ClassesId,PatentsId) VALUES (" + str(public_num1['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patents_pc(patent_id, patent_citation, connection):
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_citation + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        select_public_num2 = "SELECT Id FROM `patent_citations` WHERE Public_numId = \'" + str(public_num1['Id']) + "\'" + ";"
+        cursor.execute(select_public_num2)
+        public_num2 = cursor.fetchone()
+
+        search_id_patent = "SELECT pcId, PatentsId FROM `patents_of_pc` WHERE pcId = " + str(public_num2['Id']) + " AND " + "PatentsId =" + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `patents_of_pc` (pcId,PatentsId) VALUES (" + str(public_num2['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patents_fc(patent_id, family_citation, connection):
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `publication_num` WHERE Name = \'" + family_citation + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        select_public_num2 = "SELECT Id FROM `family_citations` WHERE Public_numId = \'" + str(public_num1['Id']) + "\'" + ";"
+        cursor.execute(select_public_num2)
+        public_num2 = cursor.fetchone()
+
+        search_id_patent = "SELECT fcId, PatentsId FROM `patents_of_fc` WHERE fcId = " + str(public_num2['Id']) + " AND " + "PatentsId =" + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `patents_of_fc` (fcId,PatentsId) VALUES (" + str(public_num2['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patents_pcb(patent_id, cited_by_patent,connection):
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `publication_num` WHERE Name = \'" + cited_by_patent + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        select_public_num2 = "SELECT Id FROM `patent_cited_by` WHERE Public_numId = \'" + str(public_num1['Id']) + "\'" + ";"
+        cursor.execute(select_public_num2)
+        public_num2 = cursor.fetchone()
+
+        search_id_patent = "SELECT pcbId, PatentsId FROM `patents_of_pcb` WHERE pcbId = " + str(public_num2['Id']) + " AND " + "PatentsId =" + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `patents_of_pcb` (pcbId,PatentsId) VALUES (" + str(public_num2['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patents_fcb(patent_id, cited_by_family,connection):
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `publication_num` WHERE Name = \'" + cited_by_family + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        select_public_num2 = "SELECT Id FROM `family_cited_by` WHERE Public_numId = \'" + str(public_num1['Id']) + "\'" + ";"
+        cursor.execute(select_public_num2)
+        public_num2 = cursor.fetchone()
+
+        search_id_patent = "SELECT fcbId, PatentsId FROM `patents_of_fcb` WHERE fcbId = " + str(public_num2['Id']) + " AND " + "PatentsId =" + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `patents_of_fcb` (fcbId,PatentsId) VALUES (" + str(public_num2['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_patents_documents(patent_id, document, connection):
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `publication_num` WHERE Name = \'" + document + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        select_public_num2 = "SELECT Id FROM `documents` WHERE Public_numId = \'" + str(public_num1['Id']) + "\'" + ";"
+        cursor.execute(select_public_num2)
+        public_num2 = cursor.fetchone()
+
+        search_id_patent = "SELECT DocumentsId, PatentsId FROM `patents_of_documents` WHERE DocumentsId = " + str(public_num2['Id']) + " AND " + "PatentsId =" + str(public_num['Id']) + ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `patents_of_documents` (DocumentsId,PatentsId) VALUES (" + str(public_num2['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
+def insert_public_as(patent_id, public_as,connection):
+    with connection.cursor() as cursor:
+        select_public_num = "SELECT Id FROM `publication_num` WHERE Name = \'" + patent_id + "\'" + ";"
+        cursor.execute(select_public_num)
+        public_num = cursor.fetchone()
+
+        select_public_num1 = "SELECT Id FROM `publication_num` WHERE Name = \'" + public_as + "\'" + ";"
+        cursor.execute(select_public_num1)
+        public_num1 = cursor.fetchone()
+
+        search_id_patent = "SELECT PublicationId, PatentsId FROM `public_as` WHERE PublicationId = " + str(public_num1['Id']) + " AND " + "PatentsId =" +str(public_num['Id'])+ ";"
+        cursor.execute(search_id_patent)
+        id_patent = cursor.fetchone()
+        if (id_patent):
+            print("УЖЕ ЕСТЬ")
+        else:
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
+            insert1_query = "INSERT INTO `public_as` (PublicationId,PatentsId) VALUES (" + str(public_num1['Id']) + "," + str(public_num['Id']) + ")" + ";"
+            cursor.execute(insert1_query)
+            connection.commit()
+            print("ВСТАВИТЬ")
 
 def main():
 
@@ -450,8 +722,10 @@ def main():
         if num == "1":
             print("ПАРСИНГ ПАТЕНТОВ")
             print("КОЛИЧЕСТВО ПАТЕНТОВ КЛАССА " + cpc + "/" + priority + ": ", end='')
-            print(get_count_patents(url=url))
-
+            count_pat = get_count_patents(url=url)
+            print(count_pat)
+            i=1
+            while i < count_pat
             patent = parser_loader_new(url = url,connection=connection)
         elif num == "2":
             print("ЗАПИСЬ В БД")
@@ -489,6 +763,47 @@ def main():
 
             for pat in range(len(patent['classes'])):
                 insert_classes(class_name = patent['classes'][pat][0],class_descriprion = patent['classes'][pat][1], connection = connection)
+
+            for pat in range(len(patent['patent_citations'])):
+                insert_patent_citations(pc_num=patent['patent_citations'][pat][0],pc_pri_d=patent['patent_citations'][pat][1],pc_pub_d=patent['patent_citations'][pat][2],pc_ass_d=patent['patent_citations'][pat][3],pc_title=patent['patent_citations'][pat][4], connection=connection)
+            for pat in range(len(patent['family_citations'])):
+                insert_family_citations(fc_num=patent['family_citations'][pat][0],
+                                    fc_pri_d=patent['family_citations'][pat][1],
+                                    fc_pub_d=patent['family_citations'][pat][2],
+                                    fc_ass_d=patent['family_citations'][pat][3],
+                                    fc_title=patent['family_citations'][pat][4], connection=connection)
+            for pat in range(len(patent['cited_by_patent'])):
+                insert_patent_cited_by(pcb_num=patent['cited_by_patent'][pat][0],
+                                       pcb_pri_d=patent['cited_by_patent'][pat][1],
+                                       pcb_pub_d=patent['cited_by_patent'][pat][2],
+                                       pcb_ass_d=patent['cited_by_patent'][pat][3],
+                                       pcb_title=patent['cited_by_patent'][pat][4], connection=connection)
+            for pat in range(len(patent['cited_by_family'])):
+                insert_family_cited_by(fcb_num=patent['cited_by_family'][pat][0],
+                                    fcb_pri_d=patent['cited_by_family'][pat][1],
+                                    fcb_pub_d=patent['cited_by_family'][pat][2],
+                                    fcb_ass_d=patent['cited_by_family'][pat][3],
+                                    fcb_title=patent['cited_by_family'][pat][4], connection=connection)
+            for pat in range(len(patent['documents'])):
+                insert_documents(doc_num=patent['documents'][pat][0],
+                                    pub_d=patent['documents'][pat][1],
+                                    title=patent['documents'][pat][2],connection=connection)
+            for pat in range(len(patent['inventors'])):
+                insert_patents_inventors(patent_id=patent['id'], inventor = patent['inventors'][pat], connection = connection)
+            for pat in range(len(patent['classes'])):
+                insert_patents_classes(patent_id=patent['id'], class_ = patent['classes'][pat][0], connection = connection)
+            for pat in range(len(patent['patent_citations'])):
+                insert_patents_pc(patent_id=patent['id'], patent_citation = patent['patent_citations'][pat][0], connection = connection)
+            for pat in range(len(patent['family_citations'])):
+                insert_patents_fc(patent_id=patent['id'], family_citation = patent['family_citations'][pat][0], connection = connection)
+            for pat in range(len(patent['cited_by_patent'])):
+                insert_patents_pcb(patent_id=patent['id'], cited_by_patent = patent['cited_by_patent'][pat][0], connection = connection)
+            for pat in range(len(patent['cited_by_family'])):
+                insert_patents_fcb(patent_id=patent['id'], cited_by_family = patent['cited_by_family'][pat][0], connection = connection)
+            for pat in range(len(patent['documents'])):
+                insert_patents_documents(patent_id=patent['id'], document = patent['documents'][pat][0], connection = connection)
+            for pat in range(len(patent['public_as'])):
+                insert_public_as(patent_id=patent['id'], public_as = patent['public_as'][pat], connection = connection)
         else:
             print("НЕИЗВЕСТНО")
 
