@@ -21,7 +21,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
-
+from colorama import init
+from termcolor import colored
+init()
+#from colorama import Fore, Back, Style
 
 def get_public_as(id_patent):
     driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -52,7 +55,7 @@ def parser_loader_new(url,connection):
     driver.maximize_window()
     try:
         driver.get(url=url)
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, 100)
         wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="htmlContent"]')))
         first_patent = driver.find_element_by_xpath("//span[@class='style-scope raw-html']")
         first_patent.click()
@@ -61,27 +64,37 @@ def parser_loader_new(url,connection):
         full_list = driver.find_element_by_xpath("//div[@class='more style-scope classification-viewer']")
         full_list.click()
 
+        id_patent = driver.find_element_by_xpath('/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[2]/section/header/h2').text
+
         status_patent = driver.find_element_by_xpath('//*[@id="wrapper"]/div[1]/div[2]/section/application-timeline/div/div[9]/div[3]/span').text
+        print(colored("[проверка статуса и id патента]", 'blue'))
+        print(colored("[ID]: ", 'green') + id_patent)
+        print(colored("[STATUS]: ", 'green'),end='')
         if(status_patent != "Active"):
+            print(colored(status_patent, 'red'))
             return
+        else:
+            print(colored(status_patent, 'green'))
+        print(colored("[DB]: ", 'green'), end='')
+
+        '''with connection.cursor() as cursor:
+                    insert_query = "SELECT Title FROM `patents` WHERE Title = \'" + name_patent + "\'"
+                    cursor.execute(insert_query)
+                    nnn = cursor.fetchone()
+                if(nnn):
+                    return'''
+
+        if (id_patent == "US10824999B2"):
+            print(colored("Уже существует", 'red'))
+            return
+        else:
+            print(colored("Добавлено", 'green'))
 
         name_patent = driver.find_element_by_xpath('/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/h1').text
-        '''with connection.cursor() as cursor:
-            insert_query = "SELECT Title FROM `patents` WHERE Title = \'" + name_patent + "\'"
-            cursor.execute(insert_query)
-            nnn = cursor.fetchone()
-        if(nnn):
-            return'''
-        print("[NAME]:" +"\n"+ name_patent)
-
-
-        id_patent = driver.find_element_by_xpath('/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[2]/section/header/h2').text
-        print("[ID]:" +"\n"+ id_patent)
+        print(colored("[NAME]: ", 'green') +"\n"+ name_patent)
 
         link_patent = driver.find_element_by_xpath("/html/body/search-app/search-result/search-ui/div/div/div/div/div/result-container/patent-result/div/div/div/div[1]/div[2]/section/header/div/state-modifier[2]/a").get_attribute("href")
         print("[LINK]:" +"\n"+ link_patent)
-
-        print("[STATUS]:" + "\n" + status_patent)
 
         abstract_patent = driver.find_element_by_xpath('//*[@id="text"]/abstract').text
         print("[ABSTRACT]:" +"\n"+ abstract_patent)
@@ -280,7 +293,7 @@ def get_count_patents(url):
     driver.maximize_window()
     try:
         driver.get(url=url)
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, 100)
         wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="count"]/div[1]/span[1]/span[3]')))
 
         full_list = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[1]/span[3]').text
@@ -291,7 +304,6 @@ def get_count_patents(url):
     finally:
         driver.close()
         driver.quit()
-
 def insert_assignee(assignee, connection):
     with connection.cursor() as cursor:
         assignee = assignee.replace("\'","\"").replace("`", "\"")
@@ -306,7 +318,6 @@ def insert_assignee(assignee, connection):
             insert1_query = "INSERT INTO `assignees` (Name) VALUES (" + "\'" + assignee + "\'" + ");"
             cursor.execute(insert1_query)
             connection.commit()
-
 def insert_publication_num(num, connection):
     with connection.cursor() as cursor:
         print(num)
@@ -320,7 +331,6 @@ def insert_publication_num(num, connection):
             insert1_query = "INSERT INTO `publication_num` (Name) VALUES (" + "\'" + num + "\'" + ")"
             cursor.execute(insert1_query)
             connection.commit()
-
 def insert_patent(id,title,link,status,assignee,abstract,claims,description, connection):
     with connection.cursor() as cursor:
         assignee = assignee.replace("\'","\"").replace("`", "\"")
@@ -345,7 +355,6 @@ def insert_patent(id,title,link,status,assignee,abstract,claims,description, con
             cursor.execute(insert1_query)
             connection.commit()
             print("ВСТАВИТЬ")
-
 def insert_inventors(inventor, connection):
     #Добавить replace
     with connection.cursor() as cursor:
@@ -360,7 +369,6 @@ def insert_inventors(inventor, connection):
             insert1_query = "INSERT INTO `inventors` (Name) VALUES (" + "\'" + inventor + "\'" + ")"
             cursor.execute(insert1_query)
             connection.commit()
-
 def insert_classes(class_name,class_descriprion, connection):
     # Добавить replace описания
     with connection.cursor() as cursor:
@@ -375,7 +383,6 @@ def insert_classes(class_name,class_descriprion, connection):
             insert1_query = "INSERT INTO `classes` (Name, Description) VALUES (" + "\'" + class_name + "\'" + "," + "\'" + class_descriprion + "\'" + ")"
             cursor.execute(insert1_query)
             connection.commit()
-
 def insert_patent_citations(pc_num,pc_pri_d,pc_pub_d,pc_ass_d,pc_title, connection):
     with connection.cursor() as cursor:
         assignee = pc_ass_d.replace("\'","\"").replace("`", "\"")
@@ -672,7 +679,6 @@ def insert_public_as(patent_id, public_as,connection):
             print("ВСТАВИТЬ")
 
 def main():
-
     print("-------------------------------+")
     print("| ВЫБЕРИТЕ ФУНКЦИЮ             |")
     print("+------------------------------+")
@@ -682,7 +688,6 @@ def main():
           "| 4) ...                       |\n" +
           "| 5) ...                       |")
     print("+------------------------------+\n")
-    #print("o`nil".replace("`","\""))
     cpc = "H04N5"
     priority = "low"
     country = "US"
@@ -709,9 +714,9 @@ def main():
             database="Patents",
             cursorclass=pymysql.cursors.DictCursor
         )
-        print("[подключение к базе данных]")
+        print(colored("[подключение к базе данных]", 'green'))
     except Exception as ex:
-        print("[подключение к базе данных не удалось]")
+        print(colored("[подключение к базе данных не удалось]", 'red'))
         print(ex)
 
     while True:
@@ -724,8 +729,10 @@ def main():
             print("КОЛИЧЕСТВО ПАТЕНТОВ КЛАССА " + cpc + "/" + priority + ": ", end='')
             count_pat = get_count_patents(url=url)
             print(count_pat)
-            i=1
-            while i < count_pat
+            '''i = 1
+            while i<=int(count_pat):
+                 print(i)
+                i+=1'''
             patent = parser_loader_new(url = url,connection=connection)
         elif num == "2":
             print("ЗАПИСЬ В БД")
@@ -805,7 +812,7 @@ def main():
             for pat in range(len(patent['public_as'])):
                 insert_public_as(patent_id=patent['id'], public_as = patent['public_as'][pat], connection = connection)
         else:
-            print("НЕИЗВЕСТНО")
+            print(colored("НЕИЗВЕСТНО", 'red'))
 
 if __name__ == "__main__":
     main()
