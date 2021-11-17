@@ -30,6 +30,7 @@ from termcolor import colored
 init()
 #from colorama import Fore, Back, Style
 
+# переработать(возможно)
 def get_public_as(id_patent):
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.maximize_window()
@@ -37,7 +38,14 @@ def get_public_as(id_patent):
     try:
         url = "https://worldwide.espacenet.com/patent/search/family/057994253/publication/" + id_patent + "?q=" + id_patent
         driver.get(url=url)
-        wait = WebDriverWait(driver, 20)
+        wait = WebDriverWait(driver, 15)
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id=\"result-list\"]/h1/div/div")))
+        pub = driver.find_element_by_xpath("//*[@id=\"result-list\"]/h1/div/div").text
+        if(pub):
+            print("ERROR")
+        else:
+            print("NOT ERROR")
+        wait = WebDriverWait(driver, 100)
         wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id=\"biblio-also-published-as-content\"]/div[1]/a/span[1]")))
         i = 1
         while True:
@@ -55,7 +63,9 @@ def get_public_as(id_patent):
         driver.quit()
 
 def parser_loader_new(url,connection):
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    options = Options()
+    options.headless = True
+    driver = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
     driver.maximize_window()
     try:
         driver.get(url=url)
@@ -180,42 +190,6 @@ def parser_loader_new(url,connection):
                 break
             i+=5
 
-        '''patentCitations = driver.find_element_by_xpath('//*[@id="patentCitations"]').text
-        pc_count = re.sub('\D', '', patentCitations)
-        print(pc_count)
-        i=1
-        patent_citations = []
-        family_citations = []
-        check = True
-        while i <= int(pc_count)+1:
-            full_info = []
-            #//*[@id="wrapper"]/div[3]/div[1]/div/div[2]/div[*]/span
-            item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[1]").text.replace(" *","")
-            item2 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[2]").text
-            item3 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[3]").text
-            item4 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[4]").text
-            item5 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div[1]/div/div[2]/div[" + str(i) + "]/span[5]").text
-            if (item1 == "Family To Family Citations"):
-                check = False
-            if(check):
-                full_info.append(item1)
-                full_info.append(item2)
-                full_info.append(item3)
-                full_info.append(item4)
-                full_info.append(item5)
-                patent_citations.append(full_info)
-            else:
-                if (item1 == "Family To Family Citations"):
-                    pass
-                else:
-                    full_info.append(item1)
-                    full_info.append(item2)
-                    full_info.append(item3)
-                    full_info.append(item4)
-                    full_info.append(item5)
-                    family_citations.append(full_info)
-            i+=1'''
-
         print(colored("[PATENT_CITATIONS]: ", 'green'))
         for pat in range(len(patent_citations)):
             print(patent_citations[pat][0] + " | " + patent_citations[pat][1] + " | " + patent_citations[pat][2] + " | " + patent_citations[pat][3] + " | " + patent_citations[pat][4])
@@ -256,47 +230,6 @@ def parser_loader_new(url,connection):
                 break
             i += 5
 
-
-        '''citedBy = driver.find_element_by_xpath('//*[@id="citedBy"]').text
-        cb_count = re.sub('\D', '', citedBy)
-        print(cb_count)
-
-        nplCitations = driver.find_element_by_xpath("//*[@id=\"nplCitations\"]").text
-        if(nplCitations):
-            n = 5
-        else:
-            n = 3
-        i = 1
-        patent_cited_by = []
-        family_cited_by = []
-        check = True
-        while i <= int(cb_count)+1:
-            full_info=[]
-            item1 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[1]").text.replace(" *","")
-            item2 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[2]").text
-            item3 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[3]").text
-            item4 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[4]").text
-            item5 = driver.find_element_by_xpath("//*[@id=\"wrapper\"]/div[3]/div["+str(n)+"]/div/div[2]/div[" + str(i) + "]/span[5]").text
-            if (item1 == "Family To Family Citations"):
-                check = False
-            if(check):
-                full_info.append(item1)
-                full_info.append(item2)
-                full_info.append(item3)
-                full_info.append(item4)
-                full_info.append(item5)
-                patent_cited_by.append(full_info)
-            else:
-                if (item1 == "Family To Family Citations"):
-                    pass
-                else:
-                    full_info.append(item1)
-                    full_info.append(item2)
-                    full_info.append(item3)
-                    full_info.append(item4)
-                    full_info.append(item5)
-                    family_cited_by.append(full_info)
-            i+=1'''
 
         print(colored("[PATENT_CITED_BY]: ", 'green'))
         for pat in range(len(patent_cited_by)):
@@ -349,158 +282,8 @@ def parser_loader_new(url,connection):
         driver.close()
         driver.quit()
 
-'''def parser_test(url,connection,count):
-    options = Options()
-    options.headless = True
-    driver = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
-    driver.maximize_window()
-    try:
-        driver.get(url=url)
-        wait = WebDriverWait(driver, 100)
-        wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="htmlContent"]')))
-        first_patent = driver.find_element_by_xpath("//span[@class='style-scope raw-html']")
-        first_patent.click()
-        i = 1
-        while i < int(count):
-            wait.until(EC.element_to_be_clickable((By.XPATH, '//div[@class=\'more style-scope classification-viewer\']')))
-            full_list = driver.find_element_by_xpath("//div[@class='more style-scope classification-viewer']")
-            full_list.click()
-
-            wait.until(EC.element_to_be_clickable((By.XPATH, 'html/body/search-app/search-result/search-ui/div/search-header/div/header/div/div[3]/result-nav/div/state-modifier[1]/a/span')))
-            number_result = driver.find_element_by_xpath("/html/body/search-app/search-result/search-ui/div/search-header/div/header/div/div[3]/result-nav/div/state-modifier[1]/a/span").text
-            print(number_result)
-            time.sleep(20)
-            next_result = driver.find_element_by_xpath("/html/body/search-app/search-result/search-ui/div/search-header/div/header/div/div[3]/result-nav/div/state-modifier[3]/a/iron-icon")
-            next_result.click()
-
-            i+=1
-    except Exception as _ex:
-        print(_ex)
-    finally:
-        driver.close()
-        driver.quit()'''
-
-def parser_test(url):
-    #options = Options()
-    #options.headless = True
-    #driver = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.maximize_window()
-    try:
-
-        #i = 1
-        driver.get(url=url)
-        while True:
-            f = open('text4.txt', 'a', encoding="utf-8")
-            #list_patent1 = []
-            wait = WebDriverWait(driver, 100)
-            wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/search-app/search-results/search-ui/div/div/div[2]/div/div/div[1]/section')))
-            links = driver.find_elements_by_xpath('/html/body/search-app/search-results/search-ui/div/div/div[2]/div/div/div[1]/section/search-result-item[*]/article/state-modifier/a/h3/raw-html/span')
-            #lll=0
-            for link in links:
-                f.write(link.text + '\n')
-                #lll+=1
-            f.close()
-            '''with open('text4.txt', 'r') as filehandle:
-                filecontents = filehandle.readlines()
-                for line in filecontents:
-                    list_patent1.append(line)
-            print(str(i)+": "+str(lll) +', ' + str(len(list_patent1)))'''
-            try:
-                next_result = driver.find_element_by_xpath('/html/body/search-app/search-results/search-ui/div/div/div[2]/div/div/div[1]/div[5]/search-paging/state-modifier[3]/a')
-                next_result.click()
-            except:
-                break
-            #i+=1
-
-    except Exception as _ex:
-        print(_ex)
-    finally:
-        driver.close()
-        driver.quit()
-
-def parser_test1(url):
-    options = Options()
-    options.headless = True
-    driver = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
-    driver.maximize_window()
-    try:
-        driver.get(url=url)
-        wait = WebDriverWait(driver, 100)
-        wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr[8]/td[4]/a')))
-        next_result = driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr[8]/td[2]/span/span[1]')
-        next_result.click()
-        time.sleep(5)
-        next_result4 = driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr[13]/td[2]/span/span[1]')
-        next_result4.click()
-        time.sleep(5)
-        next_result5 = driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr[21]/td[2]/span/span[1]')
-        next_result5.click()
-        names = []
-        i=27
-        while True:
-            time.sleep(5)
-            next_result2 = driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr['+str(i)+']')
-            next_result = driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr['+str(i)+']/td[2]')
-            next_result1 = driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr['+str(i)+']/td[4]').text
-            if('H04N 5' in next_result1):
-                next_result1 = next_result1.replace(" ","").replace("/","%2f")
-                names.append(next_result1)
-                print(next_result1)
-                if (next_result2.get_attribute('aria-expanded') == 'false'):
-                    next_result.click()
-            elif ('H04N 7' in next_result1):
-                return names
-            else:
-                pass
-
-            i += 1
-        '''links = driver.find_elements_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/table/tbody/tr[*]/td[4]/a')
-        for link in links:
-            print(link.text)'''
-    except Exception as _ex:
-        print(_ex)
-    finally:
-        driver.close()
-        driver.quit()
-
-def parser_test2(url):
-    #options = Options()
-    #options.headless = True
-    #driver = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.maximize_window()
-    try:
-
-        #i = 1
-        driver.get(url=url)
-
-        wait = WebDriverWait(driver, 100)
-        '''        wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/search-app/search-results/search-ui/div/div/div[2]/div/div/div[1]/div[2]/div[1]/span[2]/a')))
-        next_result1 = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[2]/iron-icon')
-        next_result1.click()
-        time.sleep(5)'''
-        wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="count"]/div[1]/span[2]/a')))
-        next_result1 = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[2]/a')
-        next_result1.click()
-        time.sleep(20)
-        #next_result = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[2]/a')
-        #t = next_result.get_attribute('href')
-        #return t
-
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
-        y = 'https://patents.google.com/xhr/query?url=q%3DCPC%253dH04N5%252f14%252flow%26country%3DUS%26before%3Dpriority%3A20200909%26after%3Dpriority%3A20150101%26status%3DGRANT%26language%3DENGLISH%26type%3DPATENT&exp=&download=true&download_format=xlsx'
-        r = requests.post(y, headers=headers)  # делаем запрос
-        print(r)
-
-
-    except Exception as _ex:
-        print(_ex)
-    finally:
-        driver.close()
-        driver.quit()
-
-def get_count_patents(url):
+# переделать
+def get_diff_number_patents(url,cpc):
     options = Options()
     options.headless = True
     driver = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
@@ -509,9 +292,22 @@ def get_count_patents(url):
         driver.get(url=url)
         wait = WebDriverWait(driver, 100)
         wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="count"]/div[1]/span[1]/span[3]')))
-
-        full_list = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[1]/span[3]').text
-        return full_list.replace(",","")
+        numbers = []
+        full_list = driver.find_element_by_xpath('//*[@id="count"]/div[1]/span[1]/span[3]').text.replace(",","")
+        numbers.append(full_list)
+        wb = load_workbook(cpc + '.xlsx')
+        ws = wb.active
+        colC = ws['A']
+        i=0
+        for row in colC:
+            if (row.value == 'id' or row.value == 'search URL:' or row.value == None):
+                continue
+            else:
+                i+=1
+        numbers.append(i)
+        diff = int(full_list)-int(i)
+        numbers.append(diff)
+        return numbers
 
     except Exception as _ex:
         print(_ex)
@@ -925,39 +721,27 @@ def get_id_patents(cpc):
     wb = load_workbook(cpc+'.xlsx')
     ws = wb.active
     colC = ws['A']
+    list_id_patent = []
     for row in colC:
         if (row.value == 'id' or row.value == 'search URL:' or row.value ==None):
             continue
         else:
-            print(row.value.replace("-",""))
+            list_id_patent.append(row.value.replace("-",""))
+    return list_id_patent
+
 
 def main():
-    print("---------------------------------------+")
-    print("| ВЫБЕРИТЕ ФУНКЦИЮ                     |")
-    print("+--------------------------------------+")
-    print("| 1) ПАРСИНГ ПАТЕНТОВ                  |\n" +
-          "| 2) ЗАПИСЬ В БД                       |\n" +
-          "| 3) ПОЛУЧНИЕ ДОКУМЕНТОВ С ID ПАТЕНТОВ |\n" +
-          "| 4) ПОЛУЧНИЕ ID ПАТЕНТОВ              |\n" +
-          "| 5) ...                               |")
-    print("+--------------------------------------+\n")
-    cpc = "H04N5"
-    priority = "low"
-    country = "US"
-    date_before = "20200909"
-    date_after = "20150101"
-    status = "GRANT"
-    lang = "ENGLISH"
-    type_ = "PATENT"
-    url = "https://patents.google.com/patent/US10571666B2/en?q=CPC%3d" + cpc \
-          + "%2f" + priority \
-          + "&country=" + country \
-          + "&before=priority:" + date_before \
-          + "&after=priority:" + date_after \
-          + "&status=" + status \
-          + "&language=" + lang \
-          + "&type=" + type_
-
+    print("----------------------------------------+")
+    print("| ВЫБЕРИТЕ ФУНКЦИЮ                      |")
+    print("+---------------------------------------+")
+    print("| 1) СОСТАВЛЕНИЕ ССЫЛКИ                  |\n" +
+          "| 2) ПАРСИНГ ПАТЕНТОВ                   |\n" +
+          "| 3) ЗАПИСЬ В БД                        |\n" +
+          "| 4) ПОЛУЧНИЕ ДОКУМЕНТОВ С ID ПАТЕНТОВ  |\n" +
+          "| 5) ПОЛУЧНИЕ ID ПАТЕНТОВ               |\n" +
+          "| 6) ПОЛУЧЕНИЕ РАЗНОСТИ КОЛ-ВА ПАТЕНТОВ |\n" +
+          "| 7) ТЕСТИРОВАНИЕ ФУНКЦИЙ               |")
+    print("+---------------------------------------+\n")
     try:
         connection = pymysql.connect(
             host="localhost",
@@ -978,11 +762,39 @@ def main():
 
         print("ВЫБРАНА ФУНКЦИЯ: ", end='')
         if num == "1":
+            print("СОСТАВЛЕНИЕ ССЫЛОК КЛАССИФИКАЦИЙ ПАТЕНТОВ")
+            print("ВВИДЕТЕ НУЖНЫЕ КЛАССИФИКАЦИИ CPC(ДЛЯ ВЫХОДА ВВЕДИТЕ 'x')")
+            cpc_list=[]
+            url_list=[]
+            while True:
+                print("CPC: ", end='')
+                cpc = input()
+                if cpc == 'x':
+                    break
+                cpc_list.append(cpc)
+            priority = "low"
+            country = "US"
+            date_before = "20200909"
+            date_after = "20150101"
+            status = "GRANT"
+            lang = "ENGLISH"
+            type_ = "PATENT"
+            for i in range(len(cpc_list)):
+                url = "https://patents.google.com/?q=CPC%3d" + cpc_list[i] \
+                      + "%2f" + priority \
+                      + "&country=" + country \
+                      + "&before=priority:" + date_before \
+                      + "&after=priority:" + date_after \
+                      + "&status=" + status \
+                      + "&language=" + lang \
+                      + "&type=" + type_
+                url_list.append(url)
+                print(url)
+        elif num == "2":
             print("ПАРСИНГ ПАТЕНТОВ")
             url ='https://patents.google.com/patent/US10824999B2/en?q=CPC%3dH04N5%2flow&country=US&before=priority:20200909&after=priority:20150101&status=GRANT&language=ENGLISH&type=PATENT'
             patent = parser_loader_new(url = url,connection=connection)
-
-        elif num == "2":
+        elif num == "3":
             print("ЗАПИСЬ В БД")
             for pat in range(len(patent['patent_citations'])):
                 insert_assignee(assignee = patent['patent_citations'][pat][3], connection = connection)
@@ -1059,13 +871,22 @@ def main():
                 insert_patents_documents(patent_id=patent['id'], document = patent['documents'][pat][0], connection = connection)
             for pat in range(len(patent['public_as'])):
                 insert_public_as(patent_id=patent['id'], public_as = patent['public_as'][pat], connection = connection)
-        elif num == "3":
+        elif num == "4":
             print("ПОЛУЧНИЕ ДОКУМЕНТОВ С ID ПАТЕНТОВ")
             get_doc_patents(cpc=cpc)
-        elif num == "4":
+        elif num == "5":
             print("ПОЛУЧНИЕ ID ПАТЕНТОВ")
-            get_id_patents(cpc=cpc)
-
+            list_id_patent = get_id_patents(cpc=cpc)
+        elif num == "6":
+            print("ПОЛУЧЕНИЕ РАЗНОСТИ КОЛ-ВА ПАТЕНТОВ")
+            url='https://patents.google.com/?q=CPC%3dH04N5%2flow&country=US&before=priority:20200909&after=priority:20150101&status=GRANT&language=ENGLISH&type=PATENT'
+            numbers = get_diff_number_patents(url=url,cpc=cpc)
+            print(colored("кол-во с сайта: ", 'blue'), numbers[0])
+            print(colored("кол-во из документа: ", 'blue'), numbers[1])
+            print(colored("разность: ", 'red'), numbers[2])
+        elif num == "7":
+            print("ТЕСТИРОВАНИЕ ФУНКЦИЙ")
+            get_public_as(id_patent="US1082499B2")
         else:
             print(colored("НЕИЗВЕСТНО", 'red'))
 
